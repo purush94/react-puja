@@ -1,0 +1,10 @@
+.search-bar {
+    margin-top: -4%;
+    width: 70%;
+}
+
+.custom-search-bar {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}

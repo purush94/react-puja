@@ -1,0 +1,41 @@
+.puja-container {
+    padding: 0 10%;
+}
+
+.puja-body-section {
+    background-color: #f0f0f0;
+    margin-bottom: 20px;
+}
+
+.puja-body-header {
+    display: flex;
+    background-color: #fff;
+}
+
+.puja-body-header>div {
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: background-color 0.2s ease;
+}
+
+.puja-body-header>div:hover {
+    background-color: #f0f0f0;
+}
+
+.puja-body-header>div.selected {
+    border-bottom: 2px solid #FAA030;
+    /* color: #fff; */
+}
+
+.puja-body-content {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.disabled {
+    color: gray;
+    cursor: not-allowed;
+    pointer-events: none;
+}

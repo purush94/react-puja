@@ -1,0 +1,58 @@
+.footer {
+    margin-bottom: 20px;
+}
+
+.top-section {
+    display: flex;
+    justify-content: center;
+    background: transparent linear-gradient(180deg, #FEAF65 0%, #FF8341 100%) 0% 0% no-repeat padding-box;
+    padding: 40px 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    color: white;
+}
+
+.email-section {
+    display: flex;
+    gap: 20px;
+    height: 50px;
+    width: 600px;
+}
+
+.my-input {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 5px;
+    border-radius: 2px;
+    color: grey;
+    background: white;
+    border: 1px solid grey;
+}
+
+.email-section>button {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 2px;
+    opacity: 1;
+    color: #FD8845;
+    font-size: 10px;
+    width: 150px;
+}
+
+.email-section .subscribe-button:hover {
+    background: #FFFFFF;
+    color: #FD8845;
+}
+
+.email-section .my-input:focus {
+    outline: none;
+}
+
+
+.bottom-section {
+    display: flex;
+    justify-content: space-around;
+    margin: 2% 0;
+}
