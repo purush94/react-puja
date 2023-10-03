@@ -10,10 +10,10 @@ function Home() {
     return (
         <div>
             <Header />
-            {/* <Body />
-            <Footer /> */}
+            <Body />
+            <Footer />
             {/* <PujaPage /> */}
-            <IndividualPuja />
+            {/* <IndividualPuja /> */}
         </div>
     )
 }

@@ -12,20 +12,20 @@ import Jwala from '../../../assets/jwala.jpeg';
 const cardData = [
     {
         id: 1,
-        title: 'Card 1 Title',
-        address: '123 Man St, City, Country',
+        title: 'Shakti peeth Naina devi',
+        address: 'Naina devi,Himachal',
         image: NainaDevi,
     },
     {
         id: 2,
-        title: 'Card 2 Title',
-        address: '456 Elm St, City, Country',
+        title: 'Baglamukhi Temple',
+        address: 'Bagalamukhi Temple, Bankhandi ',
         image: Baglamukhi,
     },
     {
         id: 3,
-        title: 'Card 3 Title',
-        address: '789 Oak St, City, Country',
+        title: 'Shakti Peeth Jwala  devi',
+        address: 'Jwala devi,Himachal',
         image: Jwala,
     },
 ];

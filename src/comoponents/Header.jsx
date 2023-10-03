@@ -19,11 +19,11 @@ function ResponsiveAppBar() {
     return (
         <Box position="static" color='inherit'>
             <Container maxWidth="xl" sx={{ display: 'flex' }}>
-                <Toolbar>
+                <Toolbar sx={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
                     <Box>
                         <AdbIcon sx={{ mr: 1 }} />
                     </Box>
-                    <Box className="header-options" style={{ display: 'flex' }}>
+                    <Box className="header-options" style={{ display: 'flex', flex: 0.6, justifyContent: 'space-around' }}>
                         <Button variant="text" color="inherit">Temple Onborading</Button>
                         <Button variant="text" color="inherit">About Us</Button>
                         <Box>

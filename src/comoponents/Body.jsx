@@ -80,7 +80,7 @@ function Body() {
                     {selectedSection === 'Upcoming' && <Carousel />}
                     {selectedSection === 'Ongoing' && <h1>Upcoming Content</h1>}
                 </Box>
-                <Box className='body-description-section'>
+                {/* <Box className='body-description-section'>
                     <Box>
                         <Typography variant='h5' style={{ fontWeight: 'bold' }}>
                             Why Choose Us
@@ -104,7 +104,7 @@ function Body() {
                             </Box>
                         ))}
                     </Box>
-                </Box>
+                </Box> */}
                 {/* <Box className='body-medication-section'>
                     <Typography variant='h5' style={{ fontWeight: 'bold' }}>
                         Guided Mediatations
