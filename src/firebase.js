@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: "AIzaSyB4prwvbCY62tbKRzVTLmtx6uQzwnq4JzU",
@@ -13,8 +13,30 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-// const firestore = firebase.firestore()
-const db = getFirestore(firebaseConfig.projectId);
-console.log("db-=-=-", db)
+console.log("init 0");
+const db = getFirestore(app);
+// console.log(db);
+// console.log("init 1");
+
+// const querySnapshot = await getDocs(collection(db, "puja"));
+// console.log("init 2");
+// querySnapshot.forEach((doc) => {
+//     console.log("query 0");
+//     console.log(`${doc.id} => ${doc.data()}`);
+//     console.log("query 1");
+// });
+// console.log("init 3");
+
+// const collectionName = 'puja'; // Replace with your collection name
+
+// async function logFirestoreData() {
+//     const querySnapshot = await getDocs(collection(db, collectionName));
+
+//     querySnapshot.forEach((doc) => {
+//         console.log(doc.id, ' => ', doc.data());
+//     });
+// }
+// logFirestoreData();
+// console.log("db-=-=-", db)
 
 export default db;

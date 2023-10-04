@@ -1,5 +1,5 @@
 
-const nainaDevi = {
+const details = {
     name: "Naina Devi",
     location: "Bilaspur district, Himachal Pradesh",
     description:
@@ -15,6 +15,7 @@ const nainaDevi = {
 
 const individuals = {
     description: "Individuals can participate in Naina Devi Puja and Yagya as follows:",
+    price: 751,
     fields: [
         "A link to the recorded video of Shaktipeeth Naina Devi Puja and Yagya will be provided to you.",
         "Individual’s Name and Gotra will be chanted during the Puja Sankalp in Shaktipeeth Naina devi.",
@@ -23,8 +24,9 @@ const individuals = {
     ],
 };
 
-const family = {
+const familyYagya = {
     description: "Families can participate in Naina Devi Puja and Yagya as follows:",
+    price: 1100,
     fields: [
         "A link to the recorded video of Shaktipeeth Naina Devi Puja and Yagya will be provided to you.",
         "Family Members' Name and Gotra will be chanted during the Puja Sankalp in Shaktipeeth.",
@@ -33,9 +35,10 @@ const family = {
     ],
 };
 
-const familyYagyaSilverEyes = {
+const familyYagyabhog = {
     description:
         "Families can participate in Naina Devi Siddha Yagya + Silver Eyes as follows:",
+    price: 2501,
     fields: [
         "A link to the recorded video of Shaktipeeth Naina Devi Puja and Yagya will be provided to you.",
         "Family Members' Name and Gotra (upto 8 members) will be chanted during the Puja Sankalp in Shaktipeeth.",
@@ -45,9 +48,10 @@ const familyYagyaSilverEyes = {
     ],
 };
 
-const familyYagyaBhogChunniShringar = {
+const familyYagyaVastra = {
     description:
         "Families can participate in Naina Devi Siddha Yagya + Bhog, Chunni, Shringar as follows:",
+    price: 2100,
     fields: [
         "A link to the recorded video of Shaktipeeth Naina Devi Puja and Yagya will be provided to you.",
         "Family Members' Name and Gotra (upto 8 members) will be chanted during the Puja Sankalp in Shaktipeeth.",
@@ -58,9 +62,9 @@ const familyYagyaBhogChunniShringar = {
 };
 
 module.exports = {
-    nainaDevi,
+    details,
     individuals,
-    family,
-    familyYagyaSilverEyes,
-    familyYagyaBhogChunniShringar,
+    familyYagya,
+    familyYagyabhog,
+    familyYagyaVastra,
 };

@@ -30,7 +30,7 @@ function Footer() {
                 <Grid item >
                     <Box display="flex" justifyContent="center" alignItems="center">
                         <img
-                            src="logo.png"
+                            src=""
                             alt="Logo"
                             className="logo"
                         />

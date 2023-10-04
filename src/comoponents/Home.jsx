@@ -5,16 +5,22 @@ import Body from './Body'
 import Footer from './Footer'
 import PujaPage from './PujaPage'
 import IndividualPuja from './forms/individualPuja/IndividualPuja'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 
 function Home() {
     return (
-        <div>
-            <Header />
-            <Body />
-            <Footer />
-            {/* <PujaPage /> */}
-            {/* <IndividualPuja /> */}
-        </div>
+        <Router>
+            <div>
+                <Header />
+                <Routes>
+                    <Route path='/' element={<Body />} />
+                    <Route path='/puja' element={<PujaPage />} />
+                    <Route path='/puja-details' element={<IndividualPuja />} />
+                </Routes>
+                <Footer />
+            </div>
+        </Router>
     )
 }
 

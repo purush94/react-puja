@@ -1,6 +1,7 @@
 // Define the Jwala Devi object
-const jwalaDevi = {
+const details = {
     name: "Jwala Ji or Jwala Devi Temple",
+    location: "Jwala devi,Himachal",
     description:
         "Jwala Ji or Jwala Devi Temple is one of the 51 Shaktipeeths of India and Jwala Ji Temple is one of the highly revered Shakti temples in India. It is situated in the lap of Shivalik range of Kangra valley which is called 'Kalidhar'. It is believed that this is the first temple built by the Pandavas...",
     belief:
@@ -12,6 +13,7 @@ const jwalaDevi = {
 // Define the Individual object
 const individual = {
     description: "For individuals, the following services are offered:",
+    price: 751,
     fields: [
         "A link to the recorded video of Shaktipeeth Jwala Devi Puja and Yagya will be provided to you.",
         "Individual’s Name and Gotra will be chanted during the Puja Sankalp in Shaktipeeth Jwala Devi.",
@@ -23,6 +25,7 @@ const individual = {
 // Define the Family Jwala Devi Siddha Yagya object
 const familyYagya = {
     description: "For families, the following services are offered:",
+    price: 1100,
     fields: [
         "A link to the recorded video of Shaktipeeth Jwala Devi Puja and Yagya will be provided to you.",
         "Family Members' Name and Gotra will be chanted during the Puja Sankalp in Shaktipeeth Jwala Devi.",
@@ -35,6 +38,7 @@ const familyYagya = {
 // Define the Family Jwala Devi Siddha Yagya + Vastra object
 const familyYagyaVastra = {
     description: "For families with Vastra option, the following services are offered:",
+    price: 2100,
     fields: [
         "A link to the recorded video of Shaktipeeth Jwala Devi Puja and Yagya will be provided to you.",
         "Family Members' Name and Gotra (up to 8 members) will be chanted during the Puja Sankalp in Shaktipeeth Jwala Devi.",
@@ -48,6 +52,7 @@ const familyYagyaVastra = {
 // Define the Family Jwala Devi Siddha Yagya + Bhog object
 const familyYagyaBhog = {
     description: "For families with Bhog option, the following services are offered:",
+    price: 2501,
     fields: [
         "A link to the recorded video of Shaktipeeth Jwala Devi Puja and Yagya will be provided to you.",
         "Family Members' Name and Gotra (up to 8 members) will be chanted during the Puja Sankalp in Shaktipeeth.",
@@ -60,7 +65,7 @@ const familyYagyaBhog = {
 
 // Export the objects for use in other files
 module.exports = {
-    jwalaDevi,
+    details,
     individual,
     familyYagya,
     familyYagyaVastra,

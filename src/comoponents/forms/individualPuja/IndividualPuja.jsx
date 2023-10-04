@@ -14,6 +14,8 @@ import {
     Grid,
 } from '@mui/material';
 import db from '../../../firebase'
+import { addDoc, collection } from 'firebase/firestore';
+import { CollectionsOutlined } from '@mui/icons-material';
 
 const validationSchema = Yup.object({
     name: Yup.string().required('Name is required'),
@@ -35,7 +37,7 @@ const validationSchema = Yup.object({
     }),
 });
 
-function IndividualPuja() {
+function IndividualPuja(props) {
     const [vastraDaanChecked, setVastraDaanChecked] = useState(false);
     const [bhogDaanChecked, setBhogDaanChecked] = useState(false);
     const [silverTongueChecked, setSilverTongueChecked] = useState(false);
@@ -52,6 +54,7 @@ function IndividualPuja() {
             needPrasad: false,
             address: '',
             pincode: '',
+            pujaType: 'individual',
         },
         validationSchema,
         onSubmit: (values, { resetForm }) => {
@@ -68,18 +71,15 @@ function IndividualPuja() {
                 cost += 1000;
             }
 
-            const familyDocRef = db.collection('puja').doc('individual');
-            const yajmanDetailsCollectionRef = familyDocRef.collection('yajmanDetails');
-
-            yajmanDetailsCollectionRef.set({ ...values, totalCost: cost })
-                .then((docRef) => {
-                    console.log("docId:", docRef)
-                    resetForm();
-                    alert('Form submitted successfully.');
-                })
-                .catch((error) => {
-                    console.error('Error adding document: ', error);
+            try {
+                addDoc(collection(db, "puja"), values).then(function (yd) {
+                    console.log("add 1");
+                    console.log(yd);
+                    console.log("add 2");
                 });
+            } catch (e) {
+                console.error("Failed to add doc. ", e);
+            }
         },
     });
 
@@ -111,14 +111,58 @@ function IndividualPuja() {
         setTotalCost(cost);
     }, [vastraDaanChecked, bhogDaanChecked, silverTongueChecked]);
 
+    const renderNameFields = () => {
+        if (isFamily) {
+            const nameFields = [];
+            for (let i = 1; i <= 8; i++) {
+                const fieldName = `name${i}`;
+                nameFields.push(
+                    <Grid item xs={12} key={fieldName}>
+                        <TextField
+                            fullWidth
+                            label={`Name ${i} of Yajman`}
+                            id={fieldName}
+                            name={fieldName}
+                            variant="outlined"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values[fieldName]}
+                            error={formik.touched[fieldName] && !!formik.errors[fieldName]}
+                            helperText={formik.touched[fieldName] && formik.errors[fieldName]}
+                        />
+                    </Grid>
+                );
+            }
+            return nameFields;
+        }
+        return (
+            <Grid item xs={12} sm={6}>
+                <TextField
+                    fullWidth
+                    label="Name of Yajman"
+                    id="name"
+                    name="name"
+                    variant="outlined"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.name}
+                    error={formik.touched.name && !!formik.errors.name}
+                    helperText={formik.touched.name && formik.errors.name}
+                />
+            </Grid>
+        );
+    };
+
     return (
         <Card sx={{ margin: '20px', padding: '20px' }}>
             <CardContent>
                 <form onSubmit={formik.handleSubmit}>
                     <Typography variant="h5" gutterBottom>
+                        {/* {isFamily ? 'Family Puja' : 'Individual Puja'} Cost - ₹{totalCost} */}
                         Individual Puja Cost - ₹{totalCost}
                     </Typography>
                     <Grid container spacing={2}>
+                        {/* {renderNameFields()} */}
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 fullWidth
