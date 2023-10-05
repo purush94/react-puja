@@ -16,8 +16,8 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Body />} />
-          <Route path='/puja' element={<PujaPage />} />
-          <Route path='/puja-details' element={<IndividualPuja />} />
+          <Route path='/puja/:firstword' element={<PujaPage />} />
+          <Route path='/puja-booking' element={<IndividualPuja />} />
         </Routes>
         <Footer />
       </div>

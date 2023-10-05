@@ -39,15 +39,17 @@ function PricingCard(props) {
         <Paper elevation={3} className={classes.pricingCard}>
             <div className={classes.pricingHeading}>
                 <Typography variant="h6" className={classes.details}>
-                    {props.name}
+                    {/* {props.name} */}
                 </Typography>
                 <Typography variant="h4" className={classes.price}>
-                    {props.price}
+                    {/* {props.price} */}
                 </Typography>
             </div>
-            <Typography variant="body1" className={classes.details}>
-                {props.details}
-            </Typography>
+            {/* {props.fields.map((field, index) => (
+                <Typography variant="body1" className={classes.details} key={index}>
+                    {field}
+                </Typography>
+            ))} */}
             <Button variant="outlined" className={classes.button}>
                 Get Started
             </Button>

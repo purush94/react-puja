@@ -36,7 +36,7 @@ function ResponsiveAppBar() {
                             />
                             <span>English</span>
                         </Box>
-                        <Button variant="contained">Donate</Button>
+                        <Button variant="contained" sx={{ backgroundColor: '#FEB66D' }}>Donate</Button>
                     </Box>
                 </Toolbar>
             </Container>

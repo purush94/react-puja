@@ -11,13 +11,21 @@ import Jwaladevi from '../assets/jwala.jpeg'
 import AboutPuja from './subComponent/AboutPuja/AboutPuja';
 import Benefits from './subComponent/Benefits/Benefits';
 import PricingComponent from './subComponent/PricingComponent/PricingComponent';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 function PujaPage() {
     const [selectedSection, setSelectedSection] = useState('About');
+    const { firstword } = useParams();
+    const navigate = useNavigate();
+    console.log(firstword)
 
     const handleSectionClick = (section) => {
         setSelectedSection(section);
+    };
+
+    const handleAddressClick = () => {
+        navigate(`/puja-booking`);
     };
 
     return (
@@ -41,7 +49,7 @@ function PujaPage() {
                         </Typography>
                     </CardContent>
                     <Box sx={{ display: 'flex', alignItems: 'center', pl: 4, pb: 2, mt: 1 }}>
-                        <Button variant="contained">Book Now</Button>
+                        <Button variant="contained" sx={{ backgroundColor: '#FEB66D' }} onClick={handleAddressClick}>Book Now</Button>
                     </Box>
                 </Box>
                 <CardMedia

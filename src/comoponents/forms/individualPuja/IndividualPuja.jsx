@@ -15,7 +15,10 @@ import {
 } from '@mui/material';
 import db from '../../../firebase'
 import { addDoc, collection } from 'firebase/firestore';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { CollectionsOutlined } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object({
     name: Yup.string().required('Name is required'),
@@ -42,6 +45,7 @@ function IndividualPuja(props) {
     const [bhogDaanChecked, setBhogDaanChecked] = useState(false);
     const [silverTongueChecked, setSilverTongueChecked] = useState(false);
     const [totalCost, setTotalCost] = useState(751);
+    const navigate = useNavigate();
 
     const formik = useFormik({
         initialValues: {
@@ -72,13 +76,29 @@ function IndividualPuja(props) {
             }
 
             try {
-                addDoc(collection(db, "puja"), values).then(function (yd) {
-                    console.log("add 1");
-                    console.log(yd);
-                    console.log("add 2");
+                addDoc(collection(db, "puja"), values)
+                resetForm();
+                toast.success('Booking confirmed!', {
+                    position: 'top-right',
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
                 });
-            } catch (e) {
-                console.error("Failed to add doc. ", e);
+                setTimeout(() => {
+                    navigate(`/`);
+                }, 3000);
+            } catch (error) {
+                console.error('Failed to add doc. ', error);
+                toast.error('Booking failed. Please try again later.', {
+                    position: 'top-right',
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                });
             }
         },
     });
@@ -162,7 +182,7 @@ function IndividualPuja(props) {
                         Individual Puja Cost - ₹{totalCost}
                     </Typography>
                     <Grid container spacing={2}>
-                        {/* {renderNameFields()} */}
+                        {/* {renderNameFields()}n  */}
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 fullWidth
@@ -339,11 +359,12 @@ function IndividualPuja(props) {
                                 variant="contained"
                                 color="primary"
                                 fullWidth
-                                sx={{ marginTop: '16px' }}
+                                sx={{ marginTop: '16px', backgroundColor: '#FEB66D' }}
                             >
                                 Proceed with ₹{totalCost}
                             </Button>
                         </Grid>
+                        <ToastContainer />
                     </Grid>
                 </form>
             </CardContent>
