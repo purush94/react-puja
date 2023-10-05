@@ -19,7 +19,7 @@ const cardData = [
     {
         id: 2,
         title: 'Baglamukhi Temple',
-        address: 'Bagalamukhi Temple, Bankhandi ',
+        address: 'Baglamukhi Temple, Bankhandi ',
         image: Baglamukhi,
     },
     {

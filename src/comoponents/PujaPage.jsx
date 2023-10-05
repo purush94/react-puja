@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Box } from '@mui/system'; import CardMedia from '@mui/material/CardMedia';
@@ -12,10 +12,15 @@ import AboutPuja from './subComponent/AboutPuja/AboutPuja';
 import Benefits from './subComponent/Benefits/Benefits';
 import PricingComponent from './subComponent/PricingComponent/PricingComponent';
 import { useNavigate, useParams } from 'react-router-dom';
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import db from '../firebase'
 
 
 function PujaPage() {
     const [selectedSection, setSelectedSection] = useState('About');
+    const [pujaData, setPujaData] = useState()
+    const [objectsWithName, setObjectsWithName] = useState([]);
+    const [objectsWithoutName, setObjectsWithoutName] = useState([]);
     const { firstword } = useParams();
     const navigate = useNavigate();
     console.log(firstword)
@@ -28,21 +33,46 @@ function PujaPage() {
         navigate(`/puja-booking`);
     };
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const querySnapshot = await getDocs(collection(db, firstword));
+                const data = querySnapshot.docs.map((doc) => doc.data());
+                setPujaData(data)
+                console.log('Collection data: ', data);
+            } catch (error) {
+                console.error('Error fetching collection: ', error);
+            }
+        };
+
+        fetchData();
+    }, [firstword])
+
+    useEffect(() => {
+        if (Array.isArray(pujaData)) {
+            const objectsWithNameFilter = pujaData.filter((obj) => obj.name);
+            const objectsWithoutNameFilter = pujaData.filter((obj) => !obj.name);
+
+            setObjectsWithName(objectsWithNameFilter);
+            setObjectsWithoutName(objectsWithoutNameFilter);
+        }
+    }, [pujaData]);
+
     return (
         <Box className="puja-container" sx={{ mt: 2 }}>
             <Card style={{ height: '300px', marginBottom: '30px', display: 'flex', justifyContent: 'space-between' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <CardContent sx={{ flex: '1 0 auto' }}>
                         <Typography component="div" variant="h5" sx={{ pl: 2 }}>
-                            Shakti Peeth Jwala devi Puja and Yagya
-                            {/* {props.details.name} */}
+                            {/* Shakti Peeth Jwala devi Puja and Yagya */}
+                            {console.log("58", objectsWithName)}
+                            {objectsWithName[0]?.name}
                         </Typography>
                         <Typography variant="subtitle1" color="text.secondary" component="div">
                             <IconButton aria-label="play/pause">
                                 <LocationOnOutlinedIcon sx={{ height: 25, width: 25 }} />
                             </IconButton>
-                            Jwala devi,Himachal
-                            {/* {props.details.location} */}
+                            {objectsWithName[0]?.location}
                         </Typography>
                         <Typography component="div" variant="subtitle2" sx={{ pl: 2 }}>
                             Date: 01, October 2023
