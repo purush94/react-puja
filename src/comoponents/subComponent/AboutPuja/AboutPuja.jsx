@@ -1,8 +1,7 @@
 import { Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import React from 'react'
 
-function AboutPuja(props) {
+function AboutPuja() {
     return (
         <Box sx={{ ml: 2 }}>
             <Box>

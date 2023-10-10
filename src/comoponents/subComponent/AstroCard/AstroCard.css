@@ -5,11 +5,14 @@
     justify-content: center;
     align-items: center;
     color: white;
+    width: 100%;
+    align-items: flex-start;
+    margin-bottom: 30px;
 }
 
 .background-image {
     position: relative;
-    /* Change to relative */
+    width: inherit;
 }
 
 .background-image img {
@@ -21,15 +24,14 @@
 .overlay-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
     z-index: 1;
-    margin-top: 50px;
     width: 500px;
     font-weight: 700;
     gap: 20px;
-    margin: 10% 0 0 5%;
     color: white;
+    position: absolute;
+    margin-left: 5%;
 }
 
 .overlay-heading {

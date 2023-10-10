@@ -1,13 +1,14 @@
-import React from 'react';
+
 import { Box, Typography, Card, CardContent } from '@mui/material';
 import GowShala from '../../../assets/cows-green-field-sunny-day.jpg';
+import '../../../App.css'
 
 function DonationsCards() {
     const cards = [
         {
             id: 1,
             backgroundImage: `url(${GowShala})`,
-            text: 'Gowshala',
+            text: 'GAUSHALA',
         },
         // {
         //     id: 2,
@@ -23,7 +24,7 @@ function DonationsCards() {
     return (
         <Box className="body-donations-section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Box>
-                <Typography variant="h5" style={{ fontWeight: 'bold' }}>
+                <Typography variant="h5" style={{ fontWeight: 'bold' }} className='font-montserrat-regular'>
                     Donations
                 </Typography>
             </Box>
@@ -70,7 +71,7 @@ function DonationsCards() {
                                 color: 'white',
                             }}
                         >
-                            <Typography variant="h6" style={{ fontWeight: 'bold' }}>
+                            <Typography variant="h6" style={{ fontWeight: 'bold' }} className=''>
                                 {card.text}
                             </Typography>
                         </CardContent>

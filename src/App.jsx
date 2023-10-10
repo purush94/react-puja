@@ -1,6 +1,5 @@
-import { useState } from 'react'
+
 import './App.css'
-import Home from './comoponents/Home'
 import Body from './comoponents/Body'
 import PujaPage from './comoponents/PujaPage'
 import IndividualPuja from './comoponents/forms/individualPuja/IndividualPuja'

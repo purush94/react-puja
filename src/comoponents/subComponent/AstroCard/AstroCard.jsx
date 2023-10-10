@@ -1,12 +1,11 @@
-import React from 'react';
 import { Card, CardContent, Typography, Button } from '@mui/material';
 import './AstroCard.css';
-import AstroImg from '../../../assets/mystical-numerology-scene.jpg'
+import AstroImg from '../../../assets/mystical-numerology-scene.png'
 
 function AstroCard() {
 
     return (
-        <Card className="astro-card" style={{ height: '300px', marginBottom: '30px' }}>
+        <Card className="astro-card" >
             <img src={AstroImg} alt="Background" className="background-image" />
             <CardContent className="overlay-content">
                 <Typography variant="h6" className="overlay-heading" style={{ fontWeight: 'bold' }}>

@@ -1,19 +1,21 @@
-import React from 'react';
-import { Box, Typography, Input, Button, Paper, Grid, TextField } from '@mui/material';
+
+import { Box, Typography, Input, Button, Paper, Grid } from '@mui/material';
 import './Footer.css';
+import '../App.css'
 
 function Footer() {
     return (
         <Box className="footer">
             <Box className="top-section">
-                <Typography variant="h4" className="heading">
-                    Keep up-to Date with Shiv Shakti
+                <Typography variant="h4" className="heading font-montserrat-medium">
+                    Keep up-to Date with Puja Ayojan
                 </Typography>
                 <Box className="email-section">
                     <Input
                         type="email"
-                        placeholder="Enter your email ID"
+                        placeholder="Enter your Email Id"
                         className="my-input"
+                        disableUnderline
                     />
                     <Button variant="contained" className="subscribe-button">
                         Subscribe Now

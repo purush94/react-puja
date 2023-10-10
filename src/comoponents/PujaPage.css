@@ -27,6 +27,11 @@
     /* color: #fff; */
 }
 
+.puja-body-header>div {
+    border-bottom: 2px solid gainsboro;
+    /* color: #fff; */
+}
+
 .puja-body-content {
     padding: 20px;
     background-color: #fff;

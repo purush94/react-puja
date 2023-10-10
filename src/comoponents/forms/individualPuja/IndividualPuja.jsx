@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {
@@ -13,11 +13,10 @@ import {
     Typography,
     Grid,
 } from '@mui/material';
-import db from '../../../firebase'
+import db from '../../../firebase';
 import { addDoc, collection } from 'firebase/firestore';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { CollectionsOutlined } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object({
@@ -44,8 +43,8 @@ function IndividualPuja(props) {
     const [vastraDaanChecked, setVastraDaanChecked] = useState(false);
     const [bhogDaanChecked, setBhogDaanChecked] = useState(false);
     const [silverTongueChecked, setSilverTongueChecked] = useState(false);
-    const [totalCost, setTotalCost] = useState(751);
     const navigate = useNavigate();
+    const { isFamily } = props;
 
     const formik = useFormik({
         initialValues: {
@@ -58,11 +57,11 @@ function IndividualPuja(props) {
             needPrasad: false,
             address: '',
             pincode: '',
-            pujaType: 'individual',
+            pujaType: 'family',
+            familyMembers: isFamily ? [''] : [],
         },
         validationSchema,
         onSubmit: (values, { resetForm }) => {
-            console.log("values", values, db)
             let cost = 751;
 
             if (vastraDaanChecked) {
@@ -76,7 +75,7 @@ function IndividualPuja(props) {
             }
 
             try {
-                addDoc(collection(db, "puja"), values)
+                addDoc(collection(db, 'puja'), values);
                 resetForm();
                 toast.success('Booking confirmed!', {
                     position: 'top-right',
@@ -115,61 +114,80 @@ function IndividualPuja(props) {
         setSilverTongueChecked(!silverTongueChecked);
     };
 
-    React.useEffect(() => {
-        let cost = 751;
+    const handleAddFamilyMember = () => {
+        formik.values.familyMembers.push('');
+        formik.setValues({ ...formik.values });
+    };
 
-        if (vastraDaanChecked) {
-            cost += 1100;
-        }
-        if (bhogDaanChecked) {
-            cost += 1500;
-        }
-        if (silverTongueChecked) {
-            cost += 1000;
-        }
-
-        setTotalCost(cost);
-    }, [vastraDaanChecked, bhogDaanChecked, silverTongueChecked]);
+    const handleRemoveFamilyMember = (index) => {
+        formik.values.familyMembers.splice(index, 1);
+        formik.setValues({ ...formik.values });
+    };
 
     const renderNameFields = () => {
-        if (isFamily) {
-            const nameFields = [];
-            for (let i = 1; i <= 8; i++) {
-                const fieldName = `name${i}`;
-                nameFields.push(
-                    <Grid item xs={12} key={fieldName}>
-                        <TextField
-                            fullWidth
-                            label={`Name ${i} of Yajman`}
-                            id={fieldName}
-                            name={fieldName}
-                            variant="outlined"
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            value={formik.values[fieldName]}
-                            error={formik.touched[fieldName] && !!formik.errors[fieldName]}
-                            helperText={formik.touched[fieldName] && formik.errors[fieldName]}
-                        />
-                    </Grid>
-                );
-            }
-            return nameFields;
-        }
         return (
-            <Grid item xs={12} sm={6}>
-                <TextField
-                    fullWidth
-                    label="Name of Yajman"
-                    id="name"
-                    name="name"
-                    variant="outlined"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.name}
-                    error={formik.touched.name && !!formik.errors.name}
-                    helperText={formik.touched.name && formik.errors.name}
-                />
-            </Grid>
+            <>
+                <Grid item xs={12} sm={6}>
+                    <TextField
+                        fullWidth
+                        label="Name"
+                        name="name"
+                        variant="outlined"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.name}
+                        error={formik.touched.name && !!formik.errors.name}
+                        helperText={formik.touched.name && formik.errors.name}
+                    />
+                </Grid>
+                {!isFamily && (
+                    <Grid item xs={12} sm={6}>
+                        <Button
+                            variant="outlined"
+                            color="primary"
+                            onClick={handleAddFamilyMember}
+                        >
+                            Add Family Member
+                        </Button>
+                    </Grid>
+                )}
+                {!isFamily &&
+                    formik.values.familyMembers.map((member, index) => (
+                        <Grid item xs={12} key={index}>
+                            <TextField
+                                fullWidth
+                                label={`Name ${index + 2} of Family Member`}
+                                name={`familyMembers[${index}]`}
+                                variant="outlined"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={member}
+                            />
+                            {/*family Gotra*/}
+                            {/* <TextField
+                                fullWidth
+                                label="Gotra"
+                                name="gotra"
+                                variant="outlined"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.gotra}
+                                error={formik.touched.gotra && !!formik.errors.gotra}
+                                helperText={formik.touched.gotra && formik.errors.gotra}
+                            /> */}
+                            {index > 0 && (
+                                <Button
+                                    variant="outlined"
+                                    color="secondary"
+                                    onClick={() => handleRemoveFamilyMember(index)}
+                                    sx={{ marginTop: '10px' }}
+                                >
+                                    Remove
+                                </Button>
+                            )}
+                        </Grid>
+                    ))}
+            </>
         );
     };
 
@@ -178,30 +196,14 @@ function IndividualPuja(props) {
             <CardContent>
                 <form onSubmit={formik.handleSubmit}>
                     <Typography variant="h5" gutterBottom>
-                        {/* {isFamily ? 'Family Puja' : 'Individual Puja'} Cost - ₹{totalCost} */}
-                        Individual Puja Cost - ₹{totalCost}
+                        {!isFamily ? 'Family Puja' : 'Individual Puja'} Cost - ₹{751}
                     </Typography>
                     <Grid container spacing={2}>
-                        {/* {renderNameFields()}n  */}
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                fullWidth
-                                label="Name of Yajman"
-                                id="name"
-                                name="name"
-                                variant="outlined"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
-                                value={formik.values.name}
-                                error={formik.touched.name && !!formik.errors.name}
-                                helperText={formik.touched.name && formik.errors.name}
-                            />
-                        </Grid>
+                        {renderNameFields()}
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 fullWidth
                                 label="Gotra"
-                                id="gotra"
                                 name="gotra"
                                 variant="outlined"
                                 onChange={formik.handleChange}
@@ -215,7 +217,6 @@ function IndividualPuja(props) {
                             <TextField
                                 fullWidth
                                 label="Dakshina To Pujari (Optional)"
-                                id="dakshina"
                                 name="dakshina"
                                 variant="outlined"
                                 onChange={formik.handleChange}
@@ -232,7 +233,6 @@ function IndividualPuja(props) {
                                     <FormControlLabel
                                         control={
                                             <Checkbox
-                                                id="vastraDaan"
                                                 name="vastraDaan"
                                                 onChange={handleVastraDaanChange}
                                                 checked={vastraDaanChecked}
@@ -243,7 +243,6 @@ function IndividualPuja(props) {
                                     <FormControlLabel
                                         control={
                                             <Checkbox
-                                                id="bhogDaan"
                                                 name="bhogDaan"
                                                 onChange={handleBhogDaanChange}
                                                 checked={bhogDaanChecked}
@@ -254,7 +253,6 @@ function IndividualPuja(props) {
                                     <FormControlLabel
                                         control={
                                             <Checkbox
-                                                id="silverTongue"
                                                 name="silverTongue"
                                                 onChange={handleSilverTongueChange}
                                                 checked={silverTongueChecked}
@@ -269,7 +267,6 @@ function IndividualPuja(props) {
                             <TextField
                                 fullWidth
                                 label="Phone"
-                                id="phone"
                                 name="phone"
                                 variant="outlined"
                                 onChange={formik.handleChange}
@@ -283,7 +280,6 @@ function IndividualPuja(props) {
                             <TextField
                                 fullWidth
                                 label="Email"
-                                id="email"
                                 name="email"
                                 variant="outlined"
                                 onChange={formik.handleChange}
@@ -297,7 +293,6 @@ function IndividualPuja(props) {
                             <TextField
                                 fullWidth
                                 label="Where did you find out about us?"
-                                id="whereFound"
                                 name="whereFound"
                                 variant="outlined"
                                 onChange={formik.handleChange}
@@ -311,7 +306,6 @@ function IndividualPuja(props) {
                             <FormControlLabel
                                 control={
                                     <Checkbox
-                                        id="needPrasad"
                                         name="needPrasad"
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
@@ -327,7 +321,6 @@ function IndividualPuja(props) {
                                     <TextField
                                         fullWidth
                                         label="Address"
-                                        id="address"
                                         name="address"
                                         variant="outlined"
                                         onChange={formik.handleChange}
@@ -341,7 +334,6 @@ function IndividualPuja(props) {
                                     <TextField
                                         fullWidth
                                         label="Pincode"
-                                        id="pincode"
                                         name="pincode"
                                         variant="outlined"
                                         onChange={formik.handleChange}
@@ -359,9 +351,14 @@ function IndividualPuja(props) {
                                 variant="contained"
                                 color="primary"
                                 fullWidth
-                                sx={{ marginTop: '16px', backgroundColor: '#FEB66D' }}
+                                sx={{
+                                    marginTop: '16px', backgroundColor: '#FEB66D', "&:hover": {
+                                        bgcolor: "#FEB66D",
+                                        color: "white"
+                                    }
+                                }}
                             >
-                                Proceed with ₹{totalCost}
+                                Proceed with ₹{751}
                             </Button>
                         </Grid>
                         <ToastContainer />

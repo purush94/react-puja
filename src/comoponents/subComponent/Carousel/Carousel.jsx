@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Carousel.css';
 import { Grid, IconButton } from '@mui/material';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
@@ -31,16 +31,16 @@ const cardData = [
 ];
 
 function Carousel() {
-    const [visibleCards, setVisibleCards] = useState(3);
+    const [visibleCards] = useState(3);
     const [startIndex, setStartIndex] = useState(0);
 
-    const showMoreCards = () => {
-        setVisibleCards(visibleCards + 3);
-    };
+    // const showMoreCards = () => {
+    //     setVisibleCards(visibleCards + 3);
+    // };
 
-    const showLessCards = () => {
-        setVisibleCards(3);
-    };
+    // const showLessCards = () => {
+    //     setVisibleCards(3);
+    // };
 
     const handlePrev = () => {
         if (startIndex > 0) {
@@ -58,7 +58,7 @@ function Carousel() {
         const cardGrid = [];
         for (let i = startIndex; i < startIndex + visibleCards; i += 3) {
             const row = (
-                <Grid container spacing={2} key={`row-${i}`}>
+                <Grid container spacing={3} key={`row-${i}`}>
                     {cardData.slice(i, i + 3).map((card) => (
                         <Grid item xs={4} key={card.id} className='card-element'>
                             <CustomCard

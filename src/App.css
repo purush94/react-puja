@@ -1,0 +1,76 @@
+/* Montserrat Regular */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+
+/* Montserrat Medium */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+/* Montserrat Bold */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+/* Helvetica Neue Regular */
+@import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400&display=swap');
+
+/* Helvetica Neue Italic */
+@import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400&style=italic&display=swap');
+
+/* Helvetica Neue Bold */
+@import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@700&display=swap');
+
+/* Roboto Regular */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+/* Roboto Bold */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+.font-montserrat-regular {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.font-montserrat-medium {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.font-montserrat-bold {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.font-helvetica-neue-regular {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.font-helvetica-neue-italic {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.font-helvetica-neue-bold {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.font-roboto-regular {
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.font-roboto-bold {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+/* * {
+    background-color: #F6F7FA;
+} */

@@ -7,18 +7,32 @@ import Typography from '@mui/material/Typography';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import { Button } from '@mui/material';
 import './PujaPage.css'
-import Jwaladevi from '../assets/jwala.jpeg'
 import AboutPuja from './subComponent/AboutPuja/AboutPuja';
 import Benefits from './subComponent/Benefits/Benefits';
 import PricingComponent from './subComponent/PricingComponent/PricingComponent';
 import { useNavigate, useParams } from 'react-router-dom';
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
-import db from '../firebase'
+import { collection, getDocs } from "firebase/firestore";
+import Jwaladevi from '../assets/jwala.jpeg';
+import NainaDevi from '../assets/naina.jpeg';
+import Baglamukhi from '../assets/baglamukhi.jpeg';
+import db from '../firebase';
 
+const getImageUrl = (firstword) => {
+    switch (firstword) {
+        case 'naina-devi':
+            return NainaDevi;
+        case 'jwala-devi':
+            return Jwaladevi;
+        case 'baglamukhi-temple':
+            return Baglamukhi;
+        default:
+            return '';
+    }
+};
 
 function PujaPage() {
     const [selectedSection, setSelectedSection] = useState('About');
-    const [pujaData, setPujaData] = useState()
+    const [pujaData, setPujaData] = useState();
     const [objectsWithName, setObjectsWithName] = useState([]);
     const [objectsWithoutName, setObjectsWithoutName] = useState([]);
     const { firstword } = useParams();
@@ -32,6 +46,10 @@ function PujaPage() {
     const handleAddressClick = () => {
         navigate(`/puja-booking`);
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -58,19 +76,21 @@ function PujaPage() {
         }
     }, [pujaData]);
 
+
+    const imageUrl = getImageUrl(firstword);
+    console.log("73", pujaData, objectsWithName, objectsWithoutName)
+
     return (
         <Box className="puja-container" sx={{ mt: 2 }}>
             <Card style={{ height: '300px', marginBottom: '30px', display: 'flex', justifyContent: 'space-between' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <CardContent sx={{ flex: '1 0 auto' }}>
                         <Typography component="div" variant="h5" sx={{ pl: 2 }}>
-                            {/* Shakti Peeth Jwala devi Puja and Yagya */}
-                            {console.log("58", objectsWithName)}
                             {objectsWithName[0]?.name}
                         </Typography>
                         <Typography variant="subtitle1" color="text.secondary" component="div">
                             <IconButton aria-label="play/pause">
-                                <LocationOnOutlinedIcon sx={{ height: 25, width: 25 }} />
+                                <LocationOnOutlinedIcon sx={{ height: 15, width: 15, marginLeft: '10px' }} />
                             </IconButton>
                             {objectsWithName[0]?.location}
                         </Typography>
@@ -79,14 +99,19 @@ function PujaPage() {
                         </Typography>
                     </CardContent>
                     <Box sx={{ display: 'flex', alignItems: 'center', pl: 4, pb: 2, mt: 1 }}>
-                        <Button variant="contained" sx={{ backgroundColor: '#FEB66D' }} onClick={handleAddressClick}>Book Now</Button>
+                        <Button variant="contained" sx={{
+                            backgroundColor: '#FEB66D', "&:hover": {
+                                bgcolor: "#FEB66D",
+                                color: "white"
+                            }
+                        }} onClick={handleAddressClick}>Book Now</Button>
                     </Box>
                 </Box>
                 <CardMedia
                     component="img"
-                    sx={{ width: 300, objectFit: 'cover' }}
-                    image={Jwaladevi}
-                    alt="Live from space album cover"
+                    sx={{ width: 400, objectFit: 'cover' }}
+                    image={imageUrl}
+                    alt="Puja Image"
                 />
             </Card>
             <Card style={{ height: '1000px' }}>
@@ -128,7 +153,7 @@ function PujaPage() {
                         </div>
                     )}
                 </CardContent>
-                <PricingComponent />
+                <PricingComponent pujaDetails={objectsWithoutName} />
             </Card>
         </Box>
     );

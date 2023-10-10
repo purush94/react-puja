@@ -1,7 +1,8 @@
-import React from 'react';
-import { Card, CardActionArea, CardMedia, CardContent, Typography, CardActions, Button, Grid } from '@mui/material';
+import { Card, CardActionArea, CardMedia, CardContent, Typography, Grid } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import '../../../App.css'
 
 function CustomCard({ title, imageSrc, address }) {
     const navigate = useNavigate();
@@ -21,12 +22,13 @@ function CustomCard({ title, imageSrc, address }) {
             <CardActionArea onClick={handleAddressClick}>
                 <CardMedia
                     component="img"
-                    height="210px"
+                    height="344apx"
+                    width="432px"
                     image={imageSrc}
                     alt={title}
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h6">
+                    <Typography gutterBottom variant="h6" className='font-roboto-bold'>
                         {title}
                     </Typography>
                     <Grid container alignItems="center" spacing={1}>
@@ -34,7 +36,7 @@ function CustomCard({ title, imageSrc, address }) {
                             <LocationOnIcon color="disabled" />
                         </Grid>
                         <Grid item>
-                            <Typography variant="body2" color="text.secondary">
+                            <Typography variant="body2" color="text.secondary" className='font-roboto-regular'>
                                 {address}
                             </Typography>
                         </Grid>
@@ -44,5 +46,11 @@ function CustomCard({ title, imageSrc, address }) {
         </Card>
     );
 }
+
+CustomCard.propTypes = {
+    title: PropTypes.string.isRequired,
+    imageSrc: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+};
 
 export default CustomCard;

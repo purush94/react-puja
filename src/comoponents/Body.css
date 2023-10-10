@@ -44,6 +44,10 @@
     border-bottom: 2px solid #FAA030;
 }
 
+.carousel-section-header div {
+    border-bottom: 2px solid gainsboro;
+}
+
 .disabled {
     color: gray;
     cursor: not-allowed;

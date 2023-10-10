@@ -22,14 +22,14 @@
     width: 300px;
 }
 
-.card-with-margin {
+/* .card-with-margin {
     width: 330px;
     height: 280px;
     background: transparent 0% 0% no-repeat padding-box;
     box-shadow: 0px 2px 14px #00000066;
     border-radius: 2px;
     opacity: 1;
-}
+} */
 
 .carousel-button {
     cursor: pointer;
