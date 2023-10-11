@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Box } from '@mui/system'; import CardMedia from '@mui/material/CardMedia';
@@ -82,7 +82,7 @@ function PujaPage() {
 
     return (
         <Box className="puja-container" sx={{ mt: 2 }}>
-            <Card style={{ height: '300px', marginBottom: '30px', display: 'flex', justifyContent: 'space-between' }}>
+            <Card style={{ height: '300px', display: 'flex', justifyContent: 'space-between', margin: '0 10%' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <CardContent sx={{ flex: '1 0 auto' }}>
                         <Typography component="div" variant="h5" sx={{ pl: 2 }}>
@@ -114,7 +114,7 @@ function PujaPage() {
                     alt="Puja Image"
                 />
             </Card>
-            <Card style={{ height: '1000px' }}>
+            <Card style={{ height: '1000px', marginTop: '20px', marginLeft: '4%', marginRight: '4%' }}>
                 <CardContent>
                     <Box className='puja-body-section'>
                         <Box className='puja-body-header'>

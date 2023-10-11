@@ -1,7 +1,3 @@
-.puja-container {
-    padding: 0 10%;
-}
-
 .puja-body-section {
     background-color: #f0f0f0;
     margin-bottom: 20px;
@@ -24,12 +20,10 @@
 
 .puja-body-header>div.selected {
     border-bottom: 2px solid #FAA030;
-    /* color: #fff; */
 }
 
 .puja-body-header>div {
     border-bottom: 2px solid gainsboro;
-    /* color: #fff; */
 }
 
 .puja-body-content {

@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'white',
         color: 'rgba(0, 0, 0, 0.6)',
         textAlign: 'center',
+        width: '250px',
     },
     pricingHeading: (props) => ({
         backgroundColor: props.backgroundColor,
@@ -72,7 +73,7 @@ function PricingComponent({ pujaDetails }) {
     const sortedPujaDetails = pujaDetails.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
     return (
         <section style={{ paddingTop: '20px', backgroundColor: '#f4f4f4' }}>
-            <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ height: '800px', margin: '0 auto' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                     {sortedPujaDetails.map((detail, index) => (
                         <PricingCard

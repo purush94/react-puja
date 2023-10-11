@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {
@@ -57,8 +57,8 @@ function IndividualPuja(props) {
             needPrasad: false,
             address: '',
             pincode: '',
-            pujaType: 'family',
-            familyMembers: isFamily ? [''] : [],
+            pujaType: isFamily ? 'family' : 'individual',
+            familyMembers: isFamily ? [{ name: '', gotra: '' }] : [],
         },
         validationSchema,
         onSubmit: (values, { resetForm }) => {
@@ -115,8 +115,10 @@ function IndividualPuja(props) {
     };
 
     const handleAddFamilyMember = () => {
-        formik.values.familyMembers.push('');
-        formik.setValues({ ...formik.values });
+        if (formik.values.familyMembers.length < 8) {
+            formik.values.familyMembers.push({ name: '', gotra: '' });
+            formik.setValues({ ...formik.values });
+        }
     };
 
     const handleRemoveFamilyMember = (index) => {
@@ -124,58 +126,53 @@ function IndividualPuja(props) {
         formik.setValues({ ...formik.values });
     };
 
-    const renderNameFields = () => {
+    const calculateTotalCost = () => {
+        let cost = 751;
+
+        if (vastraDaanChecked) {
+            cost += 1100;
+        }
+        if (bhogDaanChecked) {
+            cost += 1500;
+        }
+        if (silverTongueChecked) {
+            cost += 1000;
+        }
+
+        return cost;
+    };
+
+    const renderFamilyMembers = () => {
+        if (isFamily) return null;
+
         return (
-            <>
-                <Grid item xs={12} sm={6}>
-                    <TextField
-                        fullWidth
-                        label="Name"
-                        name="name"
-                        variant="outlined"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.name}
-                        error={formik.touched.name && !!formik.errors.name}
-                        helperText={formik.touched.name && formik.errors.name}
-                    />
-                </Grid>
-                {!isFamily && (
-                    <Grid item xs={12} sm={6}>
-                        <Button
-                            variant="outlined"
-                            color="primary"
-                            onClick={handleAddFamilyMember}
-                        >
-                            Add Family Member
-                        </Button>
-                    </Grid>
-                )}
-                {!isFamily &&
-                    formik.values.familyMembers.map((member, index) => (
-                        <Grid item xs={12} key={index}>
+            <Grid item xs={12}>
+                {formik.values.familyMembers.map((member, index) => (
+                    <Grid container spacing={2} key={index}>
+                        <Grid item xs={12} sm={6}>
                             <TextField
                                 fullWidth
                                 label={`Name ${index + 2} of Family Member`}
-                                name={`familyMembers[${index}]`}
+                                name={`familyMembers[${index}].name`}
                                 variant="outlined"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                value={member}
+                                value={member.name}
                             />
-                            {/*family Gotra*/}
-                            {/* <TextField
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
                                 fullWidth
-                                label="Gotra"
-                                name="gotra"
+                                label={`Gotra of Family Member ${index + 2}`}
+                                name={`familyMembers[${index}].gotra`}
                                 variant="outlined"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                value={formik.values.gotra}
-                                error={formik.touched.gotra && !!formik.errors.gotra}
-                                helperText={formik.touched.gotra && formik.errors.gotra}
-                            /> */}
-                            {index > 0 && (
+                                value={member.gotra}
+                            />
+                        </Grid>
+                        {index > 0 && (
+                            <Grid item xs={12}>
                                 <Button
                                     variant="outlined"
                                     color="secondary"
@@ -184,10 +181,20 @@ function IndividualPuja(props) {
                                 >
                                     Remove
                                 </Button>
-                            )}
-                        </Grid>
-                    ))}
-            </>
+                            </Grid>
+                        )}
+                    </Grid>
+                ))}
+                <Grid item xs={12}>
+                    <Button
+                        variant="outlined"
+                        color="primary"
+                        onClick={handleAddFamilyMember}
+                    >
+                        Add Family Member
+                    </Button>
+                </Grid>
+            </Grid>
         );
     };
 
@@ -196,10 +203,22 @@ function IndividualPuja(props) {
             <CardContent>
                 <form onSubmit={formik.handleSubmit}>
                     <Typography variant="h5" gutterBottom>
-                        {!isFamily ? 'Family Puja' : 'Individual Puja'} Cost - ₹{751}
+                        {!isFamily ? 'Family Puja' : 'Individual Puja'} Cost - ₹{calculateTotalCost()}
                     </Typography>
                     <Grid container spacing={2}>
-                        {renderNameFields()}
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                fullWidth
+                                label="Name"
+                                name="name"
+                                variant="outlined"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.name}
+                                error={formik.touched.name && !!formik.errors.name}
+                                helperText={formik.touched.name && formik.errors.name}
+                            />
+                        </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 fullWidth
@@ -213,6 +232,7 @@ function IndividualPuja(props) {
                                 helperText={formik.touched.gotra && formik.errors.gotra}
                             />
                         </Grid>
+                        {renderFamilyMembers()}
                         <Grid item xs={12}>
                             <TextField
                                 fullWidth
@@ -352,13 +372,15 @@ function IndividualPuja(props) {
                                 color="primary"
                                 fullWidth
                                 sx={{
-                                    marginTop: '16px', backgroundColor: '#FEB66D', "&:hover": {
-                                        bgcolor: "#FEB66D",
-                                        color: "white"
-                                    }
+                                    marginTop: '16px',
+                                    backgroundColor: '#FEB66D',
+                                    '&:hover': {
+                                        bgcolor: '#FEB66D',
+                                        color: 'white',
+                                    },
                                 }}
                             >
-                                Proceed with ₹{751}
+                                Proceed with ₹{calculateTotalCost()}
                             </Button>
                         </Grid>
                         <ToastContainer />
