@@ -115,7 +115,7 @@ function IndividualPuja(props) {
     };
 
     const handleAddFamilyMember = () => {
-        if (formik.values.familyMembers.length < 8) {
+        if (formik.values.familyMembers.length < 7) {
             formik.values.familyMembers.push({ name: '', gotra: '' });
             formik.setValues({ ...formik.values });
         }
@@ -146,45 +146,49 @@ function IndividualPuja(props) {
         if (isFamily) return null;
 
         return (
-            <Grid item xs={12}>
-                {formik.values.familyMembers.map((member, index) => (
-                    <Grid container spacing={2} key={index}>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                fullWidth
-                                label={`Name ${index + 2} of Family Member`}
-                                name={`familyMembers[${index}].name`}
-                                variant="outlined"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
-                                value={member.name}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                fullWidth
-                                label={`Gotra of Family Member ${index + 2}`}
-                                name={`familyMembers[${index}].gotra`}
-                                variant="outlined"
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
-                                value={member.gotra}
-                            />
-                        </Grid>
-                        {index > 0 && (
-                            <Grid item xs={12}>
-                                <Button
+            <>
+                <Grid item xs={12}>
+                    {formik.values.familyMembers.map((member, index) => (
+                        <Grid container spacing={2} key={index}>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    fullWidth
+                                    label={`Name ${index + 2} of Family Member`}
+                                    name={`familyMembers[${index}].name`}
                                     variant="outlined"
-                                    color="secondary"
-                                    onClick={() => handleRemoveFamilyMember(index)}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={member.name}
                                     sx={{ marginTop: '10px' }}
-                                >
-                                    Remove
-                                </Button>
+                                />
                             </Grid>
-                        )}
-                    </Grid>
-                ))}
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    fullWidth
+                                    label={`Gotra of Family Member ${index + 2}`}
+                                    name={`familyMembers[${index}].gotra`}
+                                    variant="outlined"
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={member.gotra}
+                                    sx={{ marginTop: '10px' }}
+                                />
+                            </Grid>
+                            {index > 0 && (
+                                <Grid item xs={12}>
+                                    <Button
+                                        variant="outlined"
+                                        color="secondary"
+                                        onClick={() => handleRemoveFamilyMember(index)}
+                                        sx={{ marginTop: '10px' }}
+                                    >
+                                        Remove
+                                    </Button>
+                                </Grid>
+                            )}
+                        </Grid>
+                    ))}
+                </Grid>
                 <Grid item xs={12}>
                     <Button
                         variant="outlined"
@@ -194,7 +198,7 @@ function IndividualPuja(props) {
                         Add Family Member
                     </Button>
                 </Grid>
-            </Grid>
+            </>
         );
     };
 
@@ -203,7 +207,7 @@ function IndividualPuja(props) {
             <CardContent>
                 <form onSubmit={formik.handleSubmit}>
                     <Typography variant="h5" gutterBottom>
-                        {!isFamily ? 'Family Puja' : 'Individual Puja'} Cost - ₹{calculateTotalCost()}
+                        {isFamily ? 'Family Puja' : 'Individual Puja'} Cost - ₹{calculateTotalCost()}
                     </Typography>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
