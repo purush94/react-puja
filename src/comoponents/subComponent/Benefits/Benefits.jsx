@@ -1,25 +1,26 @@
 import { IconButton, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import React from 'react'
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
-function Benefits() {
+function Benefits({ benefitData }) {
     return (
         <Box sx={{ ml: 2 }}>
-            <Typography variant='h6' sx={{ color: '#FAA030', fontWeight: 700 }}>Benefits of Puja</Typography>
+            <p className='font-roboto-bold subSection-header' style={{ color: '#FE6603' }}>Benefits of Puja</p>
             <Box>
-                <div style={{ display: 'flex', marginTop: '1%' }}>
-                    <IconButton>
-                        <KeyboardDoubleArrowRightIcon color='warning' />
-                    </IconButton>
-                    <div>
-                        <Typography variant='subtitle2' sx={{ fontWeight: 700 }}>Wealth and Prosperity</Typography>
-                        <Typography variant='subtitle2'>lorem ipsum</Typography>
+                {benefitData.map((benefit, index) => (
+                    <div key={index} style={{ display: 'flex', marginTop: '1%', alignItems: 'center' }}>
+                        <IconButton >
+                            <KeyboardDoubleArrowRightIcon color='warning' sx={{ cursor: 'context-menu' }} />
+                        </IconButton>
+                        <div>
+                            <span className='font-roboto-regular subSection-content' style={{ lineHeight: '1.2rem' }}>{benefit}</span>
+                        </div>
                     </div>
-                </div>
+                ))}
             </Box>
         </Box>
-    )
+    );
 }
+
 
 export default Benefits

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {
@@ -209,6 +209,7 @@ function IndividualPuja(props) {
                     <Typography variant="h5" gutterBottom>
                         {isFamily ? 'Family Puja' : 'Individual Puja'} Cost - ₹{calculateTotalCost()}
                     </Typography>
+                    <span></span>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <TextField
@@ -254,6 +255,7 @@ function IndividualPuja(props) {
                             <FormControl component="fieldset">
                                 <FormGroup>
                                     <Typography variant="subtitle1">Optional Offerings:</Typography>
+                                    <span></span>
                                     <FormControlLabel
                                         control={
                                             <Checkbox

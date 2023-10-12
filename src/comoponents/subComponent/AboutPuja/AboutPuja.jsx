@@ -1,12 +1,13 @@
-import { Typography } from '@mui/material'
-import { Box } from '@mui/system'
 
-function AboutPuja() {
+import { Box } from '@mui/system'
+import '../../../App.css'
+
+function AboutPuja({ aboutData, aboutHeader }) {
     return (
         <Box sx={{ ml: 2 }}>
             <Box>
-                <Typography variant='h6' sx={{ color: '#FAA030', fontWeight: 700 }}>About Shakti Peeth Jwala devi</Typography>
-                <Typography variant='subtitle2' sx={{ mt: 1 }}></Typography>
+                <p className='font-roboto-bold subSection-header' style={{ color: '#FE6603' }}>{aboutHeader}</p>
+                <p className='font-roboto-regular subSection-content' style={{ lineHeight: '1.5rem' }}>{aboutData}</p>
             </Box>
         </Box>
     )

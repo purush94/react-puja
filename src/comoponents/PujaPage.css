@@ -1,3 +1,11 @@
+.puja-container {
+    background-image: url('../assets/mandala.svg');
+    background-repeat: repeat-y;
+    background-size: 50%;
+    background-position-x: -400px;
+}
+
+
 .puja-body-section {
     background-color: #f0f0f0;
     margin-bottom: 20px;
@@ -6,6 +14,7 @@
 .puja-body-header {
     display: flex;
     background-color: #fff;
+    font-weight: 400;
 }
 
 .puja-body-header>div {
@@ -20,6 +29,7 @@
 
 .puja-body-header>div.selected {
     border-bottom: 2px solid #FAA030;
+    color: #FAA030;
 }
 
 .puja-body-header>div {

@@ -78,25 +78,19 @@ function PujaPage() {
 
 
     const imageUrl = getImageUrl(firstword);
-    console.log("73", pujaData, objectsWithName, objectsWithoutName)
 
     return (
         <Box className="puja-container" sx={{ mt: 2 }}>
-            <Card style={{ height: '300px', display: 'flex', justifyContent: 'space-between', margin: '0 10%' }}>
+            {console.log("objectWithName", objectsWithName[0])}
+            <Card style={{ height: '300px', display: 'flex', justifyContent: 'space-between', background: '#FFF4EB 0% 0% no-repeat padding-box', margin: '0 10% 2%' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <CardContent sx={{ flex: '1 0 auto' }}>
-                        <Typography component="div" variant="h5" sx={{ pl: 2 }}>
-                            {objectsWithName[0]?.name}
-                        </Typography>
-                        <Typography variant="subtitle1" color="text.secondary" component="div">
-                            <IconButton aria-label="play/pause">
-                                <LocationOnOutlinedIcon sx={{ height: 15, width: 15, marginLeft: '10px' }} />
-                            </IconButton>
-                            {objectsWithName[0]?.location}
-                        </Typography>
-                        <Typography component="div" variant="subtitle2" sx={{ pl: 2 }}>
-                            Date: 01, October 2023
-                        </Typography>
+                        <span className='section-header' style={{ color: '#FE6603' }}>{objectsWithName[0]?.name}</span>
+                        <p style={{ color: '#808080' }}><IconButton aria-label="play/pause">
+                            <LocationOnOutlinedIcon sx={{ height: 15, width: 15, marginRight: '3px' }} />
+                        </IconButton>
+                            <span>{objectsWithName[0]?.location}, {objectsWithName[0]?.location2}</span></p>
+                        <p style={{ color: '#808080' }}>Date: 01, October 2023</p>
                     </CardContent>
                     <Box sx={{ display: 'flex', alignItems: 'center', pl: 4, pb: 2, mt: 1 }}>
                         <Button variant="contained" sx={{
@@ -114,10 +108,10 @@ function PujaPage() {
                     alt="Puja Image"
                 />
             </Card>
-            <Card style={{ height: '1000px', marginTop: '20px', marginLeft: '4%', marginRight: '4%' }}>
+            <Card style={{ maxHeightheight: '1200px', marginTop: '20px', margin: '0 10%', }}>
                 <CardContent>
                     <Box className='puja-body-section'>
-                        <Box className='puja-body-header'>
+                        <Box className='puja-body-header font-roboto-bold menu-header'>
                             <Box
                                 onClick={() => handleSectionClick('About')}
                                 className={selectedSection === 'About' ? 'selected' : ''}
@@ -139,12 +133,12 @@ function PujaPage() {
                     </Box>
                     {selectedSection === 'About' && (
                         <div>
-                            <AboutPuja />
+                            <AboutPuja aboutData={objectsWithName[0]?.description} aboutHeader={objectsWithName[0]?.aboutHeader} />
                         </div>
                     )}
                     {selectedSection === 'Benefits' && (
                         <div>
-                            <Benefits />
+                            <Benefits benefitData={objectsWithName[0]?.benefits} />
                         </div>
                     )}
                     {selectedSection === 'Recorded Video' && (

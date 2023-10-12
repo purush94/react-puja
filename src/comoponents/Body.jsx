@@ -9,7 +9,9 @@ import { Box } from '@mui/system';
 import AstroCard from './subComponent/AstroCard/AstroCard';
 import DonationsCards from './subComponent/DonationsCards/DonationsCards';
 import '../App.css'
-import { Paper, Typography } from '@mui/material';
+import { Paper } from '@mui/material';
+import Pre from '../assets/preHeader.svg'
+import Post from '../assets/postHeader.svg'
 
 const cardData = [
     {
@@ -43,7 +45,6 @@ const cardData = [
 
 
 function Body() {
-    // const [searchValue, setSearchValue] = useState('');
     const [selectedSection, setSelectedSection] = useState('Upcoming');
 
     const handleSectionClick = (section) => {
@@ -65,7 +66,7 @@ function Body() {
             <Box className="body-content">
                 {/* <SearchBar placeholder="Search..." onSearch={handleSearch} /> */}
                 <Box className='body-carousel-section'>
-                    <Box className='carousel-section-header font-montserrat-medium'>
+                    <Box className='carousel-section-header font-playfair-regular section-header'>
                         <Box className='disabled'
                         >
                             Ongoing
@@ -83,20 +84,18 @@ function Body() {
                     {selectedSection === 'Ongoing' && <h1>Upcoming Content</h1>}
                 </Box>
                 <Box className='body-description-section'>
-                    <Box>
-                        <Typography variant='h5' style={{ fontWeight: 'bold' }} className='font-montserrat-bold'>
-                            Why Choose Us
-                        </Typography>
+                    <Box className='body-description-header'>
+                        <img src={Pre} alt="Before Image" className='header-image' />
+                        <span className='font-playfair-regular section-header'>Why Choose Us</span>
+                        <img src={Post} alt="Before Image" className='header-image' />
                     </Box>
                     <Box className="description-card-section">
                         {cardData.map((card, index) => (
                             <Box className='description-card' key={index}>
-                                <Paper elevation={0}>
+                                <Paper elevation={0} sx={{ background: 'transparent' }}>
                                     {card.features.map((feature, featureIndex) => (
                                         <div key={featureIndex}>
-                                            <Typography variant="body2" gutterBottom className='font-montserrat-regular'>
-                                                {feature.description}
-                                            </Typography>
+                                            <span className='font-roboto-regular section-content'>{feature.description}</span>
                                         </div>
                                     ))}
                                 </Paper>
@@ -108,6 +107,7 @@ function Body() {
                     <Typography variant='h5' style={{ fontWeight: 'bold' }}>
                         Guided Mediatations
                     </Typography>
+                    <span className='font-playfair-regular section-header'>Guided Mediatations</span>
                     <Meditation />
                 </Box> */}
                 <Box className='body-astrology-section'>

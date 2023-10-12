@@ -1,7 +1,9 @@
 
-import { Box, Typography, Card, CardContent } from '@mui/material';
+import { Box, Card, CardContent } from '@mui/material';
 import GowShala from '../../../assets/cows-green-field-sunny-day.jpg';
 import '../../../App.css'
+import Pre from '../../../assets/preHeader.svg'
+import Post from '../../../assets/postHeader.svg'
 
 function DonationsCards() {
     const cards = [
@@ -23,10 +25,13 @@ function DonationsCards() {
 
     return (
         <Box className="body-donations-section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Box>
-                <Typography variant="h5" style={{ fontWeight: 'bold' }} className='font-montserrat-regular'>
+            <Box className="body-description-header">
+                <img src={Pre} alt="Before Image" className='header-image' />
+                {/* <Typography variant="h5" style={{ fontWeight: 'bold' }} className='font-montserrat-regular'>
                     Donations
-                </Typography>
+                </Typography> */}
+                <span className='font-playfair-regular section-header'>Donations</span>
+                <img src={Post} alt="Before Image" className='header-image' />
             </Box>
             <Box
                 display="flex"
@@ -71,9 +76,10 @@ function DonationsCards() {
                                 color: 'white',
                             }}
                         >
-                            <Typography variant="h6" style={{ fontWeight: 'bold' }} className=''>
+                            {/* <Typography variant="h6" style={{ fontWeight: 'bold' }} className=''>
                                 {card.text}
-                            </Typography>
+                            </Typography> */}
+                            <span className='font-roboto-regular section-header'>{card.text}</span>
                         </CardContent>
                     </Card>
                 ))}

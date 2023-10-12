@@ -32,14 +32,14 @@ function ResponsiveAppBar() {
                         <Button variant="text" color="inherit" className='font-montserrat-medium'>Temple Onborading</Button>
                         <Button variant="text" color="inherit" className='font-montserrat-medium'>About Us</Button>
                         <Box className='font-montserrat-medium'>
-                            <span>हिन्दी</span>
+                            <span className='font-montserrat-medium'>हिन्दी</span>
                             <Switch
                                 checked={checked}
                                 onChange={handleChange}
                                 inputProps={{ 'aria-label': 'controlled' }}
                                 color="warning"
                             />
-                            <span>English</span>
+                            <span className='font-montserrat-medium'>English</span>
                         </Box>
                         <Button variant="contained" className='font-montserrat-medium' sx={{
                             backgroundColor: '#FEB66D', "&:hover": {
