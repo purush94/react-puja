@@ -1,6 +1,6 @@
-import { IconButton, Typography } from '@mui/material'
+import { IconButton } from '@mui/material'
 import { Box } from '@mui/system'
-import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import Icon from '../../../assets/li_icon.svg'
 
 function Benefits({ benefitData }) {
     return (
@@ -10,10 +10,10 @@ function Benefits({ benefitData }) {
                 {benefitData.map((benefit, index) => (
                     <div key={index} style={{ display: 'flex', marginTop: '1%', alignItems: 'center' }}>
                         <IconButton >
-                            <KeyboardDoubleArrowRightIcon color='warning' sx={{ cursor: 'context-menu' }} />
+                            <img src={Icon} style={{ width: '60%', cursor: 'context-menu', marginRight: '5px' }} />
                         </IconButton>
                         <div>
-                            <span className='font-roboto-regular subSection-content' style={{ lineHeight: '1.2rem' }}>{benefit}</span>
+                            <span className='font-nunito-300 puja-content' style={{ lineHeight: '1.2rem' }}>{benefit}</span>
                         </div>
                     </div>
                 ))}

@@ -20,7 +20,7 @@ function DonationsCards() {
     ];
 
     const handleCardClick = (cardId) => {
-        console.log(`Clicked on card with ID: ${cardId}`);
+        // console.log(`Clicked on card with ID: ${cardId}`);
     };
 
     return (

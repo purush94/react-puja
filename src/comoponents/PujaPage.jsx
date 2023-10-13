@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Box } from '@mui/system'; import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import { Button } from '@mui/material';
 import './PujaPage.css'
@@ -16,6 +15,7 @@ import Jwaladevi from '../assets/jwala.jpeg';
 import NainaDevi from '../assets/naina.jpeg';
 import Baglamukhi from '../assets/baglamukhi.jpeg';
 import db from '../firebase';
+import '../App.css'
 
 const getImageUrl = (firstword) => {
     switch (firstword) {
@@ -37,14 +37,15 @@ function PujaPage() {
     const [objectsWithoutName, setObjectsWithoutName] = useState([]);
     const { firstword } = useParams();
     const navigate = useNavigate();
-    console.log(firstword)
+    const pricingComponentRef = useRef();
 
     const handleSectionClick = (section) => {
         setSelectedSection(section);
     };
 
     const handleAddressClick = () => {
-        navigate(`/puja-booking`);
+        pricingComponentRef.current.scrollIntoView({ behavior: 'smooth' });
+        // navigate(`/puja-booking`);
     };
 
     useEffect(() => {
@@ -57,7 +58,7 @@ function PujaPage() {
                 const querySnapshot = await getDocs(collection(db, firstword));
                 const data = querySnapshot.docs.map((doc) => doc.data());
                 setPujaData(data)
-                console.log('Collection data: ', data);
+                // console.log('Collection data: ', data);
             } catch (error) {
                 console.error('Error fetching collection: ', error);
             }
@@ -81,7 +82,7 @@ function PujaPage() {
 
     return (
         <Box className="puja-container" sx={{ mt: 2 }}>
-            {console.log("objectWithName", objectsWithName[0])}
+            {/* {console.log("objectWithName", objectsWithName[0])} */}
             <Card style={{ height: '300px', display: 'flex', justifyContent: 'space-between', background: '#FFF4EB 0% 0% no-repeat padding-box', margin: '0 10% 2%' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <CardContent sx={{ flex: '1 0 auto' }}>
@@ -89,12 +90,11 @@ function PujaPage() {
                         <p style={{ color: '#808080' }}><IconButton aria-label="play/pause">
                             <LocationOnOutlinedIcon sx={{ height: 15, width: 15, marginRight: '3px' }} />
                         </IconButton>
-                            <span>{objectsWithName[0]?.location}, {objectsWithName[0]?.location2}</span></p>
-                        <p style={{ color: '#808080' }}>Date: 01, October 2023</p>
+                            <span className='font-nunito-300 puja-content'>{objectsWithName[0]?.location}, {objectsWithName[0]?.location2}</span></p>
                     </CardContent>
                     <Box sx={{ display: 'flex', alignItems: 'center', pl: 4, pb: 2, mt: 1 }}>
-                        <Button variant="contained" sx={{
-                            backgroundColor: '#FEB66D', "&:hover": {
+                        <Button variant="contained" style={{
+                            backgroundColor: 'rgb(255, 131, 65)', "&:hover": {
                                 bgcolor: "#FEB66D",
                                 color: "white"
                             }
@@ -147,7 +147,9 @@ function PujaPage() {
                         </div>
                     )}
                 </CardContent>
-                <PricingComponent pujaDetails={objectsWithoutName} />
+                <div ref={pricingComponentRef}>
+                    <PricingComponent pujaDetails={objectsWithoutName} />
+                </div>
             </Card>
         </Box>
     );

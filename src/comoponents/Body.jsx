@@ -9,7 +9,7 @@ import { Box } from '@mui/system';
 import AstroCard from './subComponent/AstroCard/AstroCard';
 import DonationsCards from './subComponent/DonationsCards/DonationsCards';
 import '../App.css'
-import { Paper } from '@mui/material';
+import { Card, CardContent, Paper } from '@mui/material';
 import Pre from '../assets/preHeader.svg'
 import Post from '../assets/postHeader.svg'
 
@@ -90,17 +90,22 @@ function Body() {
                         <img src={Post} alt="Before Image" className='header-image' />
                     </Box>
                     <Box className="description-card-section">
-                        {cardData.map((card, index) => (
-                            <Box className='description-card' key={index}>
-                                <Paper elevation={0} sx={{ background: 'transparent' }}>
-                                    {card.features.map((feature, featureIndex) => (
-                                        <div key={featureIndex}>
-                                            <span className='font-roboto-regular section-content'>{feature.description}</span>
-                                        </div>
-                                    ))}
-                                </Paper>
-                            </Box>
-                        ))}
+                        <Card sx={{ margin: '20px', padding: '20px' }}>
+                            <CardContent sx={{ display: 'flex' }}>
+                                {cardData.map((card, index) => (
+                                    <Box className='description-card' key={index}>
+                                        <Paper elevation={0} sx={{ background: 'transparent' }}>
+                                            {card.features.map((feature, featureIndex) => (
+                                                <div key={featureIndex}>
+                                                    <span className='font-nunito-300 section-content description-card'>{feature.description}</span>
+                                                </div>
+                                            ))}
+                                        </Paper>
+                                    </Box>
+                                ))}
+                            </CardContent>
+                        </Card>
+
                     </Box>
                 </Box>
                 {/* <Box className='body-medication-section'>
@@ -110,12 +115,12 @@ function Body() {
                     <span className='font-playfair-regular section-header'>Guided Mediatations</span>
                     <Meditation />
                 </Box> */}
-                <Box className='body-astrology-section'>
+                {/* <Box className='body-astrology-section'>
                     <AstroCard />
-                </Box>
-                <Box className='body-donations-section'>
+                </Box> */}
+                {/* <Box className='body-donations-section'>
                     <DonationsCards />
-                </Box>
+                </Box> */}
             </Box>
         </Box>
     );

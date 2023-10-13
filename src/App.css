@@ -16,6 +16,9 @@
 /* Playfair Display Regular */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&display=swap');
 
+/* Nunito 300*/
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
 
 .font-playfair-regular {
     font-family: 'Playfair Display', serif;
@@ -53,6 +56,12 @@
     font-style: normal;
 }
 
+.font-nunito-300 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
 .section-header {
     font-size: 25px;
     font-weight: 700;
@@ -76,4 +85,38 @@
 .menu-header {
     font-size: 16px;
     font-weight: 700;
+}
+
+.privacy-header {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.privacy-span {
+    font-weight: 700;
+}
+
+.puja-content {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.form-header {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.color-white {
+    color: white;
+}
+
+.color-orange {
+    color: rgb(255, 131, 65);
+}
+
+.container-background {
+    background-image: url('./assets/mandala.svg');
+    background-repeat: repeat-y;
+    background-size: 50%;
+    background-position-x: -400px;
 }

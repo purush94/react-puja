@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import '../../../App.css'
 
 import Thali1 from '../../../assets/thali_1.png';
 import Thali2 from '../../../assets/thali_2.png';
@@ -12,6 +13,7 @@ import bg1 from '../../../assets/red.png';
 import bg2 from '../../../assets/rust.png';
 import bg3 from '../../../assets/brown.png';
 import bg4 from '../../../assets/orange.png';
+import { useNavigate } from 'react-router-dom';
 
 const colors = ['#64CCC5', '#85E6C5', '#F7E987', '#A1CCD1', '#33D1FF'];
 
@@ -39,8 +41,10 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'white',
         color: 'rgba(0, 0, 0, 0.6)',
         textAlign: 'center',
-        width: '280px',
+        width: '23%',
         position: 'relative',
+        borderTopLeftRadius: '25px',
+        borderTopRightRadius: '25px'
     },
     pricingHeading: (props) => ({
         backgroundImage: props.background.heading,
@@ -50,7 +54,9 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '4px 4px 0 0',
         position: 'relative',
         height: '250px',
-        marginTop: '5px',
+        marginTop: '-2px',
+        marginLeft: '-2.3%',
+        marginRight: '-2.3%',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -99,22 +105,26 @@ const useStyles = makeStyles((theme) => ({
 
 function PricingCard(props) {
     const classes = useStyles(props);
+    const navigate = useNavigate();
+
+    const handleGetStarted = () => {
+        navigate('/puja-booking', { state: { title: props.title, price: props.price, fields: props.fields, props: props } });
+    };
 
     return (
         <Paper elevation={3} className={classes.pricingCard}>
             <div className={classes.pricingHeading}>
                 <img src={props.background.title} className={classes.titleImage} />
-                <span className={classes.details}>{props.title}</span>
-                <span className={classes.price}>₹{props.price}</span>
+                <span className={classes.details} style={{ color: 'white', paddingBottom: '5px' }}>{props.title}</span>
+                <span className={classes.price} style={{ color: 'white', fontWeight: '700' }}>₹{props.price}</span>
             </div>
-
             <div style={{ padding: '0 20px', marginBottom: '20px' }}>
                 {props.fields.map((field, index) => (
-                    <p className={classes.details} key={index}>
-                        <span style={{ fontWeight: 700 }}>&#8226; {field}</span>
+                    <p className={classes.details} key={index} style={{ textAlign: 'left' }}>
+                        <span style={{ fontWeight: 700 }} className='font-nunito-300'>{field}</span>
                     </p>
                 ))}
-                <Button variant="outlined" className={classes.button} >
+                <Button variant="outlined" className={classes.button} onClick={handleGetStarted}>
                     Get Started
                 </Button>
             </div>

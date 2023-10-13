@@ -14,7 +14,7 @@ function CustomCard({ title, imageSrc, address }) {
         const words = firstPart.split(' ');
         const param = words.length > 1 ? words.map(word => word.toLowerCase()).join('-') : firstPart.toLowerCase();
 
-        console.log(param)
+        // console.log(param)
         navigate(`/puja/${param}`);
     };
 
@@ -44,7 +44,7 @@ function CustomCard({ title, imageSrc, address }) {
                             <span></span>
                         </Grid>
                     </Grid>
-                    <Grid container spacing={1} sx={{ height: '50px', paddingLeft: '0px', marginBottom: '5px', alignItems: 'center' }}>
+                    {/* <Grid container spacing={1} sx={{ height: '50px', paddingLeft: '0px', marginBottom: '5px', alignItems: 'center' }}>
                         <Grid item sx={{ padding: 0 }}>
                             <CalendarMonthIcon color="disabled" sx={{ height: '15px', padding: '0px' }} />
                         </Grid>
@@ -54,7 +54,7 @@ function CustomCard({ title, imageSrc, address }) {
                             </Typography>
                             <span></span>
                         </Grid>
-                    </Grid>
+                    </Grid> */}
                 </CardContent>
             </CardActionArea>
         </Card>

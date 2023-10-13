@@ -50,11 +50,11 @@ body {
 }
 
 .carousel-section-header div.selected {
-    border-bottom: 2px solid #FAA030;
+    border-bottom: 4px solid #FAA030;
 }
 
 .carousel-section-header div {
-    border-bottom: 2px solid gainsboro;
+    border-bottom: 4px solid gainsboro;
 }
 
 .disabled {
@@ -86,8 +86,9 @@ body {
     width: 360px;
     padding: 20px;
     letter-spacing: 0px;
-    color: #000000DE;
-    opacity: 0.5;
+    color: black;
+    /* opacity: 0.5; */
+    font-weight: 400;
     background-color: transparent;
 }
 
