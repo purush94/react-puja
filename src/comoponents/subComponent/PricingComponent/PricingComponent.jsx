@@ -36,7 +36,7 @@ const backgroundImages = [
     },
 ];
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
     pricingCard: {
         backgroundColor: 'white',
         color: 'rgba(0, 0, 0, 0.6)',
@@ -46,8 +46,7 @@ const useStyles = makeStyles((theme) => ({
         borderTopLeftRadius: '25px',
         borderTopRightRadius: '25px'
     },
-    pricingHeading: (props) => ({
-        backgroundImage: props.background.heading,
+    pricingHeading: {
         backgroundSize: '100% 100%;',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -62,30 +61,32 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         gap: '2px',
         paddingBottom: '10px'
-    }),
+    },
     price: {
         fontSize: '1rem',
         color: 'black',
         position: 'relative',
         zIndex: 1,
+        fontFamily: 'Roboto',
     },
     details: {
         fontSize: '1rem',
         fontWeight: 700,
-        marginTop: theme.spacing(2),
+        marginTop: '16px',
         position: 'relative',
         zIndex: 1,
+        fontFamily: 'Nunito',
     },
-    button: (props) => ({
-        backgroundColor: props.borderColor,
+    button: {
+        backgroundColor: (props) => props.borderColor,
         color: 'white',
-        borderColor: props.borderColor,
+        borderColor: (props) => props.borderColor,
         position: 'relative',
         zIndex: 1,
         marginBottom: '10px'
-    }),
-    backgroundImage: (props) => ({
-        background: `url(${props.background.title})`,
+    },
+    backgroundImage: {
+        background: (props) => `url(${props.background.title})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -95,36 +96,35 @@ const useStyles = makeStyles((theme) => ({
         top: 0,
         left: 0,
         zIndex: 0,
-    }),
+    },
     titleImage: {
         width: '50%',
         height: '50%',
         marginTop: '10px'
     },
-}));
+});
 
 function PricingCard(props) {
-    const classes = useStyles(props);
+    const msClasses = useStyles(props);
     const navigate = useNavigate();
-
     const handleGetStarted = () => {
         navigate('/puja-booking', { state: { title: props.title, price: props.price, fields: props.fields, props: props } });
     };
 
     return (
-        <Paper elevation={3} className={classes.pricingCard}>
-            <div className={classes.pricingHeading}>
-                <img src={props.background.title} className={classes.titleImage} />
-                <span className={classes.details} style={{ color: 'white', paddingBottom: '5px' }}>{props.title}</span>
-                <span className={classes.price} style={{ color: 'white', fontWeight: '700' }}>₹{props.price}</span>
+        <Paper {...props} elevation={3} className={msClasses.pricingCard}>
+            <div className={msClasses.pricingHeading} style={{ backgroundImage: backgroundImages[props.currInd].heading }}>
+                <img src={props.background.title} className={msClasses.titleImage} />
+                <span className={msClasses.details} style={{ color: 'white', paddingBottom: '5px' }}>{props.title}</span>
+                <span className={msClasses.price} style={{ color: 'white', fontWeight: '700' }}>₹{props.price}</span>
             </div>
             <div style={{ padding: '0 20px', marginBottom: '20px' }}>
                 {props.fields.map((field, index) => (
-                    <p className={classes.details} key={index} style={{ textAlign: 'left' }}>
+                    <p className={msClasses.details} key={index} style={{ textAlign: 'left' }}>
                         <span style={{ fontWeight: 700 }} className='font-nunito-300'>{field}</span>
                     </p>
                 ))}
-                <Button variant="outlined" className={classes.button} onClick={handleGetStarted}>
+                <Button variant="outlined" className={msClasses.button} onClick={handleGetStarted}>
                     Get Started
                 </Button>
             </div>
@@ -133,6 +133,7 @@ function PricingCard(props) {
 }
 
 PricingCard.propTypes = {
+    currInd: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     fields: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -150,7 +151,8 @@ function PricingComponent({ pujaDetails }) {
                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                     {sortedPujaDetails.map((detail, index) => (
                         <PricingCard
-                            key={index}
+                            key={`pujaCard-${index}`}
+                            currInd={index}
                             title={detail.title}
                             price={detail.price}
                             fields={detail.fields}
