@@ -9,6 +9,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PujaForm from './comoponents/forms/PujaForm'
 import PrivacyPolicy from './comoponents/subComponent/PrivacyPolicy/PrivacyPolicy'
 import Cancellation from './comoponents/subComponent/Cancellation/Cancellation'
+import Contact from './comoponents/subComponent/Contact/Contact'
+import TermsAndCondition from './comoponents/subComponent/TermsAndCondition/TermsAndCondition'
 
 function App() {
 
@@ -22,6 +24,8 @@ function App() {
           <Route path='/puja-booking' element={<PujaForm />} />
           <Route path='/privacy-policy' element={<PrivacyPolicy />} />
           <Route path='/cancellation' element={<Cancellation />} />
+          <Route path='/contact-us' element={<Contact />} />
+          <Route path='/terms-condition' element={<TermsAndCondition />} />
         </Routes>
         <Footer />
       </div>

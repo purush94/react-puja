@@ -13,7 +13,7 @@ import bg1 from '../../../assets/red.png';
 import bg2 from '../../../assets/rust.png';
 import bg3 from '../../../assets/brown.png';
 import bg4 from '../../../assets/orange.png';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const colors = ['#64CCC5', '#85E6C5', '#F7E987', '#A1CCD1', '#33D1FF'];
 
@@ -107,9 +107,12 @@ const useStyles = makeStyles({
 function PricingCard(props) {
     const msClasses = useStyles(props);
     const navigate = useNavigate();
+    const { firstword } = useParams();
     const handleGetStarted = () => {
-        navigate('/puja-booking', { state: { title: props.title, price: props.price, fields: props.fields, props: props } });
+        navigate('/puja-booking', { state: { title: props.title, price: props.price, fields: props.fields, props: props, url: firstword } });
     };
+
+    console.log('url', firstword)
 
     return (
         <Paper {...props} elevation={3} className={msClasses.pricingCard}>
@@ -143,8 +146,9 @@ PricingCard.propTypes = {
     }).isRequired,
 };
 
-function PricingComponent({ pujaDetails }) {
+function PricingComponent({ pujaDetails, param }) {
     const sortedPujaDetails = pujaDetails.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+    console.log("148", param)
     return (
         <section style={{ padding: '20px 0', backgroundColor: '#f4f4f4' }}>
             <div style={{ height: '800px', margin: '0 auto' }}>

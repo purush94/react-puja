@@ -148,7 +148,7 @@ function PujaPage() {
                     )}
                 </CardContent>
                 <div ref={pricingComponentRef}>
-                    <PricingComponent pujaDetails={objectsWithoutName} />
+                    <PricingComponent pujaDetails={objectsWithoutName} param={firstword} />
                 </div>
             </Card>
         </Box>

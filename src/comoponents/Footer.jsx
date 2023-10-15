@@ -16,6 +16,14 @@ function Footer() {
         navigate(`/cancellation`);
     }
 
+    const handleContact = () => {
+        navigate(`/contact-us`)
+    }
+
+    const handleTermsAndCondition = () => {
+        navigate(`/terms-condition`)
+    }
+
     const handleAddressClick = () => {
         navigate(`/`);
     }
@@ -41,7 +49,9 @@ function Footer() {
                         <p className='font-roboto-bold  section-header'>Office Hours</p>
                         <span className='font-nunito-300 subSection-content'>Mon - Fri: 9:00 AM - 5:00 PM</span>
                         <p onClick={handlePrivacy} style={{ cursor: 'pointer' }} className='font-nunito-300'>Privacy Policy</p>
-                        <p onClick={handleCancel} style={{ cursor: 'pointer' }} className='font-nunito-300'>Cancellation</p>
+                        <p onClick={handleCancel} style={{ cursor: 'pointer' }} className='font-nunito-300'>Cancellation and Refund</p>
+                        <p onClick={handleTermsAndCondition} style={{ cursor: 'pointer' }} className='font-nunito-300'>Terms and Condition</p>
+                        <p onClick={handleContact} style={{ cursor: 'pointer' }} className='font-nunito-300'>Contact Us</p>
                     </Paper>
                 </Grid>
                 <Grid item sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

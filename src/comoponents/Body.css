@@ -5,12 +5,15 @@ body {
 .body-container {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
-    /* background-color: rgba(246, 247, 250, 1); */
+    background-color: rgba(246, 247, 250, 1);
     background-image: url('../assets/mandala.svg');
     background-size: contain;
     background-repeat: no-repeat;
-    background-color: rgba(216, 213, 213, 0.6);
+    /* background-color: rgba(216, 213, 213, 0.6); */
+    background-position: center;
+    background-color: #F6F7FA;
+    background-size: 50%;
+    background-blend-mode: color-dodge;
 }
 
 .banner-container {

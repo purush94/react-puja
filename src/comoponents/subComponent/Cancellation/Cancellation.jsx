@@ -24,27 +24,33 @@ const prasadInformation = [
 ];
 
 function Cancellation() {
+    const cardStyle = {
+        margin: '20px',
+        padding: '20px',
+        backgroundColor: 'rgba(255, 255, 255, 0.5)'
+    };
+
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
     return (
         <Box className='container-background' sx={{ minHeight: '1200px' }}>
-            <Card sx={{ margin: '20px', padding: '20px' }}>
+            <Card sx={cardStyle}>
                 <CardContent>
-                    <p className="section-header" style={{ textDecoration: 'underline' }}>Cancellation & Refund Policy</p>
-                    <p className="font-nunito-300" style={{ lineHeight: '2rem' }}>Thank you for choosing www.pujaayojan.com. We appreciate your interest and trust in our devotional services. This Cancellation & Refund Policy is designed to provide guidance on cancellations, returns, and refunds for our services.</p>
+                    <p className="section-header font-montserrat-bold" style={{ textDecoration: 'underline' }}>Cancellation & Refund Policy</p>
+                    <p className="font-nunito-300 subSection-content" style={{ lineHeight: '2rem' }}>Thank you for choosing www.pujaayojan.com. We appreciate your interest and trust in our devotional services. This Cancellation & Refund Policy is designed to provide guidance on cancellations, returns, and refunds for our services.</p>
                     <br />
-                    <p className="subSection-header">Cancellations for Scheduled Devotional Services:</p>
+                    <p className="subSection-header font-montserrat-bold">Cancellations for Scheduled Devotional Services:</p>
                     <ul>
                         {cancellationRefundPolicy.map((point, index) => (
-                            <li key={index} className="font-nunito-300" style={{ lineHeight: '2rem' }}>{point}</li>
+                            <li key={index} className="font-nunito-300 subSection-content" style={{ lineHeight: '2rem' }}>{point}</li>
                         ))}
                     </ul>
                     <br />
-                    <p className="subSection-header">Prasad</p>
+                    <p className="subSection-header font-montserrat-bold">Prasad</p>
                     <ul>
                         {prasadInformation.map((point, index) => (
-                            <li key={index} className="font-nunito-300" style={{ lineHeight: '2rem' }}>{point}</li>
+                            <li key={index} className="font-nunito-300 subSection-content" style={{ lineHeight: '2rem' }}>{point}</li>
                         ))}
                     </ul>
                 </CardContent>

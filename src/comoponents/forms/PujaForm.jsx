@@ -27,6 +27,7 @@ function PujaForm() {
     const location = useLocation();
     const { state } = location.state;
     const title = location.state.title;
+    const url = location.state.url;
     const [isFamily, setIsFamily] = useState(title.includes('Family'));
 
 
@@ -127,13 +128,17 @@ function PujaForm() {
 
     };
 
+    const handleAddressClick = () => {
+        navigate(`/puja/${url}`);
+    }
+
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
 
     return (
         <Box className='container-background' sx={{ minHeight: '1200px' }}>
-            {console.log("state", state, location.state, location.state.title, isFamily)}
+            {console.log("state", state, location.state, location.state.title, isFamily, url)}
             <Grid container spacing={2} justifyContent="center" className='main-container' style={{ paddingBottom: '20px' }}>
                 <Grid item xs={12} sm={6}>
                     <Grid container spacing={2}>
@@ -151,7 +156,7 @@ function PujaForm() {
                                         <p className='font-nunito-300' style={{ display: 'flex', paddingLeft: '15px', marginTop: '-10px', fontSize: '14px', alignItems: 'center' }}>Puja + Sankalp + Brahman Bhojan + Gau Seva + Deep Daan
                                             <span style={{ padding: '0 0 0 10px', fontSize: '12px', color: '#388CFE', cursor: 'pointer S' }}>View Detailed Offer</span>
                                         </p>
-                                        <p className='font-nunito-300' style={{ paddingLeft: '15px', fontSize: '12px', color: '#388CFE', textDecoration: 'underline', cursor: 'pointer' }}>Change Package</p>
+                                        <p className='font-nunito-300' style={{ paddingLeft: '15px', fontSize: '12px', color: '#388CFE', textDecoration: 'underline', cursor: 'pointer' }} onClick={handleAddressClick}>Change Package</p>
                                     </div>
                                 </CardContent>
                             </Card>
@@ -350,25 +355,24 @@ function PujaForm() {
                                 <div style={headerStyle} className='font-roboto-bold color-white'>
                                     <span >Price To Pay</span>
                                 </div>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '2%' }}>
-                                    <span>Package Amount</span>
-                                    <span>₹ {location?.state?.price}</span>
+                                <div style={{ padding: '15px' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '2%' }}>
+                                        <span>Package Amount</span>
+                                        <span>₹ {location?.state?.price}</span>
+                                    </div>
+                                    <Button
+                                        variant="contained"
+                                        backgroundColor='#FFF0D9'
+                                        style={{
+                                            backgroundColor: 'rgb(255, 131, 65)',
+                                            color: 'white',
+                                            marginTop: '2%'
+                                        }}
+                                        onClick={handleSubmit}
+                                    >
+                                        Submit
+                                    </Button>
                                 </div>
-                                <Button
-                                    variant="contained"
-                                    backgroundColor='#FFF0D9'
-                                    style={{
-                                        backgroundColor: 'rgb(255, 131, 65)', "&:hover": {
-                                            bgcolor: "rgb(255, 131, 65)",
-                                            color: "white"
-                                        },
-                                        color: 'white',
-                                        marginTop: '2%'
-                                    }}
-                                    onClick={handleSubmit}
-                                >
-                                    Submit
-                                </Button>
                             </CardContent>
                         </Card>
                     </Paper>
