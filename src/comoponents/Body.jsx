@@ -90,22 +90,17 @@ function Body() {
                         <img src={Post} alt="Before Image" className='header-image' />
                     </Box>
                     <Box className="description-card-section">
-                        <Card sx={{ margin: '20px', padding: '20px' }}>
-                            <CardContent sx={{ display: 'flex' }}>
-                                {cardData.map((card, index) => (
-                                    <Box className='description-card' key={index}>
-                                        <Paper elevation={0} sx={{ background: 'transparent' }}>
-                                            {card.features.map((feature, featureIndex) => (
-                                                <div key={featureIndex}>
-                                                    <span className='font-nunito-300 section-content description-card'>{feature.description}</span>
-                                                </div>
-                                            ))}
-                                        </Paper>
-                                    </Box>
-                                ))}
-                            </CardContent>
-                        </Card>
-
+                        {cardData.map((card, index) => (
+                            <Box className='description-card' key={index}>
+                                <Paper elevation={0} sx={{ background: 'transparent' }}>
+                                    {card.features.map((feature, featureIndex) => (
+                                        <div key={featureIndex}>
+                                            <span className='font-nunito-300 section-content description-card'>{feature.description}</span>
+                                        </div>
+                                    ))}
+                                </Paper>
+                            </Box>
+                        ))}
                     </Box>
                 </Box>
                 {/* <Box className='body-medication-section'>

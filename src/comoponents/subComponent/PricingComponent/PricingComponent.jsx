@@ -112,8 +112,6 @@ function PricingCard(props) {
         navigate('/puja-booking', { state: { title: props.title, price: props.price, fields: props.fields, props: props, url: firstword } });
     };
 
-    console.log('url', firstword)
-
     return (
         <Paper {...props} elevation={3} className={msClasses.pricingCard}>
             <div className={msClasses.pricingHeading} style={{ backgroundImage: backgroundImages[props.currInd].heading }}>
@@ -146,9 +144,8 @@ PricingCard.propTypes = {
     }).isRequired,
 };
 
-function PricingComponent({ pujaDetails, param }) {
+function PricingComponent({ pujaDetails }) {
     const sortedPujaDetails = pujaDetails.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-    console.log("148", param)
     return (
         <section style={{ padding: '20px 0', backgroundColor: '#f4f4f4' }}>
             <div style={{ height: '800px', margin: '0 auto' }}>

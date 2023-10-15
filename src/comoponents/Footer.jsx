@@ -62,7 +62,7 @@ function Footer() {
                 <Grid item>
                     <Paper elevation={0} className="column" sx={{ background: 'transparent' }}>
                         <p className='font-roboto-bold section-header'>Contact Us</p>
-                        <p className='font-nunito-300 subSection-content'>Phone: +91 74041 110333 </p>
+                        <p className='font-nunito-300 subSection-content'>Phone: +91 74041 11033</p>
                         <span className='font-nunito-300 subSection-content'>Email: namaste@pujayojan.com</span>
                     </Paper>
                 </Grid>

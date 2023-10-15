@@ -14,6 +14,7 @@ import { collection, getDocs } from "firebase/firestore";
 import Jwaladevi from '../assets/jwala.jpeg';
 import NainaDevi from '../assets/naina.jpeg';
 import Baglamukhi from '../assets/baglamukhi.jpeg';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import db from '../firebase';
 import '../App.css'
 
@@ -35,6 +36,7 @@ function PujaPage() {
     const [pujaData, setPujaData] = useState();
     const [objectsWithName, setObjectsWithName] = useState([]);
     const [objectsWithoutName, setObjectsWithoutName] = useState([]);
+    const [formattedDate, setFormattedDate] = useState('');
     const { firstword } = useParams();
     const navigate = useNavigate();
     const pricingComponentRef = useRef();
@@ -45,7 +47,6 @@ function PujaPage() {
 
     const handleAddressClick = () => {
         pricingComponentRef.current.scrollIntoView({ behavior: 'smooth' });
-        // navigate(`/puja-booking`);
     };
 
     useEffect(() => {
@@ -74,6 +75,28 @@ function PujaPage() {
 
             setObjectsWithName(objectsWithNameFilter);
             setObjectsWithoutName(objectsWithoutNameFilter);
+
+            if (objectsWithNameFilter.length > 0 && objectsWithNameFilter[0].date) {
+                const timestamp = objectsWithNameFilter[0].date.seconds;
+
+                console.log("Timestamp:", timestamp);
+
+                const dateObject = new Date(timestamp * 1000);
+
+                console.log("Date Object:", dateObject);
+
+                const year = dateObject.getFullYear();
+
+                if (year >= 1900 && year <= new Date().getFullYear()) {
+                    const day = dateObject.getDate();
+                    const month = dateObject.toLocaleString('default', { month: 'long' });
+
+                    const formattedDateString = `${day}, ${month}, ${year}`;
+                    setFormattedDate(formattedDateString);
+                } else {
+                    console.log("Invalid year:", year);
+                }
+            }
         }
     }, [pujaData]);
 
@@ -82,17 +105,25 @@ function PujaPage() {
 
     return (
         <Box className="puja-container" sx={{ mt: 2 }}>
-            {/* {console.log("objectWithName", objectsWithName[0])} */}
+            {console.log("objectWithName", objectsWithName[0]?.date, formattedDate)}
             <Card style={{ height: '300px', display: 'flex', justifyContent: 'space-between', background: '#FFF4EB 0% 0% no-repeat padding-box', margin: '0 10% 2%' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                     <CardContent sx={{ flex: '1 0 auto' }}>
                         <span className='section-header' style={{ color: '#FE6603' }}>{objectsWithName[0]?.name}</span>
-                        <p style={{ color: '#808080' }}><IconButton aria-label="play/pause">
-                            <LocationOnOutlinedIcon sx={{ height: 15, width: 15, marginRight: '3px' }} />
-                        </IconButton>
-                            <span className='font-nunito-300 puja-content'>{objectsWithName[0]?.location}, {objectsWithName[0]?.location2}</span></p>
+                        <p style={{ color: '#808080', display: 'flex' }}>
+                            <IconButton aria-label="play/pause">
+                                <LocationOnOutlinedIcon sx={{ height: 15, width: 15, marginRight: '3px' }} />
+                            </IconButton>
+                            <span className='font-nunito-300 puja-subHeader'>{objectsWithName[0]?.location}, {objectsWithName[0]?.location2}</span>
+                        </p>
+                        <p style={{ color: '#808080', display: 'flex' }}>
+                            <IconButton aria-label="play/pause">
+                                <CalendarMonthIcon sx={{ height: 13, width: 13, marginRight: '3px' }} />
+                            </IconButton>
+                            <span className='font-nunito-300 puja-subContent'>{formattedDate}</span>
+                        </p>
                     </CardContent>
-                    <Box sx={{ display: 'flex', alignItems: 'center', pl: 4, pb: 2, mt: 1 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', pl: 3, pb: 2, mt: 1 }}>
                         <Button variant="contained" style={{
                             backgroundColor: 'rgb(255, 131, 65)', "&:hover": {
                                 bgcolor: "#FEB66D",
