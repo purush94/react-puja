@@ -22,6 +22,10 @@ function ResponsiveAppBar() {
         navigate(`/`);
     }
 
+    const handleAboutUs = () => {
+        navigate(`/about-us`);
+    }
+
     return (
         <Box position="static" color='inherit'>
             <Container maxWidth="xl" sx={{ display: 'flex' }}>
@@ -31,7 +35,7 @@ function ResponsiveAppBar() {
                     </Box>
                     <Box className="header-options" style={{ display: 'flex', flex: 0.6, justifyContent: 'space-around' }}>
                         <Button variant="text" color="inherit" className='font-montserrat-medium' style={{ cursor: 'context-menu' }} disabled></Button>
-                        <Button variant="text" color="inherit" className='font-montserrat-medium' style={{ cursor: 'context-menu' }} disabled></Button>
+                        <Button variant="text" color="inherit" className='font-montserrat-medium' style={{ cursor: 'pointer' }} onClick={handleAboutUs}>About Us</Button>
                         {/* <Box className='font-montserrat-medium'>
                             <span className='font-montserrat-medium'>हिन्दी</span>
                             <Switch

@@ -34,18 +34,18 @@ function TermsAndCondition() {
                     <p className="section-header font-montserrat-bold" style={{ textDecoration: 'underline' }}>Information and Pricing:</p>
                     <p className="font-nunito-300 subSection-content" style={{ lineHeight: '2rem' }}>To cancel a service, please contact our customer support team via namaste@pujaayojan.com</p>
 
-                    <p className="font-nunito-300 subSection-content" style={{ lineHeight: '2rem' }}>Cancellations made at least [24 hours] before the scheduled service will be eligible for a full refund. Cancellations made after this time frame may not be eligible for a refund.</p>
+                    <p className="font-nunito-300 subSection-content" style={{ lineHeight: '2rem' }}>Cancellations made at least <b>24 hours</b> before the scheduled service will be eligible for a full refund. Cancellations made after this time frame may not be eligible for a refund.</p>
 
                     <p className="font-nunito-300 subSection-content" style={{ lineHeight: '2rem' }}>Refunds for scheduled devotional services will be issued if the service is cancelled in accordance with our cancellation policy.</p>
 
-                    <p className="font-nunito-300 subSection-content" style={{ lineHeight: '2rem' }}>Refunds will be credit back to the original credit card/ bank account/other medium used for payment within 15 days from the days of cancellation request was received.</p>
+                    <p className="font-nunito-300 subSection-content" style={{ lineHeight: '2rem' }}>Refunds will be credit back to the original credit card/ bank account/other medium used for payment within <b>15 days</b> from the days of cancellation request was received.</p>
 
                     <p className="section-header font-montserrat-bold" style={{ textDecoration: 'underline' }}>SEVERABILITY:</p>
                     <p className="font-nunito-300 subSection-content" style={{ lineHeight: '2rem' }}>If any provision of these Terms of Use is found to be unenforceable or invalid, that provision will be limited or eliminated to the minimum extent necessary so that these Terms of Use will otherwise remain in full force and effect and enforceable. The failure of either party to exercise, in any respect any right provided for herein shall not be deemed a waiver of any further rights hereunder. Waiver of compliance in any particular instance does not mean that we will waive compliance in the future. In order for any waiver of compliance with these Terms of Use to be binding, we must provide you with written notice of such waiver through one of our authorized representatives.</p>
                     <br />
                     <p className="section-header font-montserrat-bold" style={{ textDecoration: 'underline' }}>Contact Information:</p>
                     <p className="font-nunito-300 subSection-content" style={{ lineHeight: '2rem' }}>If you have any questions or concerns regarding these Terms and Conditions, please contact us at:</p>
-                    <p className='font-nunito-300 subSection-content'><strong>Phone:</strong> +91 74041 110333</p>
+                    <p className='font-nunito-300 subSection-content'><strong>Phone:</strong> +91 74041 11033</p>
                     <p className='font-nunito-300 subSection-content'><strong>Email:</strong> <a href="mailto:namaste@pujayojan.com">namaste@pujayojan.com</a></p>
                 </CardContent>
             </Card>
