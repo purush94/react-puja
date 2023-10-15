@@ -26,11 +26,13 @@ function PujaForm() {
     const navigate = useNavigate();
     const location = useLocation();
     const { state } = location.state;
+    const title = location.state.title;
+    const [isFamily, setIsFamily] = useState(title.includes('Family'));
 
-    // console.log("state", state, location.state)
+
     const headerStyle = {
         backgroundColor: '#FF8341',
-        padding: '8px',
+        padding: '15px',
         display: 'flex',
         justifyContent: 'space-between'
     };
@@ -71,6 +73,7 @@ function PujaForm() {
 
     const [showVastraOfferingsInput, setShowVastraOfferingsInput] = useState(false);
     const [vastraOfferingsAmount, setVastraOfferingsAmount] = useState('');
+    const [vastraOfferingQty, setVastraOfferingQty] = useState()
 
     const [formErrors, setFormErrors] = useState({});
 
@@ -130,181 +133,210 @@ function PujaForm() {
 
     return (
         <Box className='container-background' sx={{ minHeight: '1200px' }}>
+            {console.log("state", state, location.state, location.state.title, isFamily)}
             <Grid container spacing={2} justifyContent="center" className='main-container' style={{ paddingBottom: '20px' }}>
                 <Grid item xs={12} sm={6}>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
-                            <Card sx={{ margin: '20px', height: '400px' }}>
-                                <CardContent>
-                                    <div style={headerStyle}>
-                                        <span className='font-roboto-bold color-white'>Selected Pooja Package</span>
+                            <Card style={{ borderRadius: '0' }}>
+                                <CardContent style={{ padding: 0 }}>
+                                    <div >
+                                        <div style={headerStyle}>
+                                            <span className='font-roboto-bold color-white'>Selected Pooja Package</span>
+                                        </div>
+                                        <p className='font-roboto-bold subSection-header color-orange' style={{ display: 'flex', justifyContent: 'space-between', padding: '5px 15px 0 15px' }}>
+                                            <span>{location?.state?.title}</span>
+                                            <span>₹ {location?.state?.price}</span>
+                                        </p>
+                                        <p className='font-nunito-300' style={{ display: 'flex', paddingLeft: '15px', marginTop: '-10px', fontSize: '14px', alignItems: 'center' }}>Puja + Sankalp + Brahman Bhojan + Gau Seva + Deep Daan
+                                            <span style={{ padding: '0 0 0 10px', fontSize: '12px', color: '#388CFE', cursor: 'pointer S' }}>View Detailed Offer</span>
+                                        </p>
+                                        <p className='font-nunito-300' style={{ paddingLeft: '15px', fontSize: '12px', color: '#388CFE', textDecoration: 'underline', cursor: 'pointer' }}>Change Package</p>
                                     </div>
-                                    <p className='font-roboto-bold subSection-header color-orange' style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                        <span>{location?.state?.title}</span>
-                                        <span>₹ {location?.state?.price}</span>
-                                    </p>
-                                    <span className='font-nunito-300'>Puja + Sankalp + Brahman Bhojan + Gau Seva + Deep Daan</span>
-                                    {/* <span>View Detailed Offer</span> */}
-                                    {/* <p className='font-nunito-300' onClick={}>Change Package</p> */}
                                 </CardContent>
                             </Card>
                         </Grid>
                         <Grid item xs={12}>
-                            <Card sx={{ margin: '20px', padding: '20px', height: '400px' }}>
-                                <CardContent>
+                            <Card style={{ borderRadius: '0' }}>
+                                <CardContent style={{ padding: 0 }}>
                                     <div style={headerStyle}>
                                         <span className='font-roboto-bold color-white'>Enter Devotee Details</span>
                                     </div>
-                                    <div className="details-section" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '2% ' }}>
-                                        <div style={{ display: 'flex', flexDirection: 'column', flex: '1 0 32%' }}>
-                                            <span className='font-nunito-300 form-header color-orange'>Enter name</span>
-                                            <TextField variant="standard" />
-                                        </div>
-                                        <div style={{ display: 'flex', flexDirection: 'column', flex: '1 0 32%' }}>
-                                            <span className='font-nunito-300 form-header color-orange'>Enter Phone Number</span>
-                                            <TextField variant="standard" />
-                                        </div>
-                                        <div style={{ display: 'flex', flexDirection: 'column', flex: '1 0 32%' }}>
-                                            <span className='font-nunito-300 form-header color-orange'>Enter Email Id</span>
-                                            <TextField variant="standard" />
-                                        </div>
-                                        <div style={{ display: 'flex', flexDirection: 'column', flex: '1 0 32%' }}>
-                                            <span className='font-nunito-300 form-header color-orange'>Enter Address</span>
-                                            <TextField variant="standard" />
+                                    <div style={{ padding: '15px' }}>
+                                        <div className="details-section" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '2% ' }}>
+                                            <div style={{ display: 'flex', flexDirection: 'column', flex: '1 0 32%' }}>
+                                                <span className='font-nunito-300 form-header color-orange'>Enter name</span>
+                                                <TextField variant="standard" />
+                                            </div>
+                                            <div style={{ display: 'flex', flexDirection: 'column', flex: '1 0 32%' }}>
+                                                <span className='font-nunito-300 form-header color-orange'>Enter Phone Number</span>
+                                                <TextField variant="standard" />
+                                            </div>
+                                            <div style={{ display: 'flex', flexDirection: 'column', flex: '1 0 32%' }}>
+                                                <span className='font-nunito-300 form-header color-orange'>Enter Email Id</span>
+                                                <TextField variant="standard" />
+                                            </div>
+                                            <div style={{ display: 'flex', flexDirection: 'column', flex: '1 0 32%' }}>
+                                                <span className='font-nunito-300 form-header color-orange'>Enter Address</span>
+                                                <TextField variant="standard" />
+                                            </div>
                                         </div>
                                     </div>
                                 </CardContent>
                             </Card>
                         </Grid>
                         <Grid item xs={12}>
-                            <Card sx={{ margin: '20px', padding: '20px', height: '400px' }}>
-                                <CardContent>
+                            <Card style={{ borderRadius: '0' }}>
+                                <CardContent style={{ padding: 0 }}>
                                     <div style={headerStyle}>
                                         <span className='font-roboto-bold color-white'>Enter Devotee's Family Details ({yajmanDetails.length}/7)</span>
                                     </div>
-                                    <div className='yajman-details'>
-                                        {yajmanDetails.map((yajman, index) => (
-                                            <div key={index} className='yajman-details' style={{ marginTop: '3%', display: 'flex', gap: '10%' }}>
-                                                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                                    <span className='font-nunito-300 form-header color-orange'>Name of Yajman</span>
-                                                    <TextField
-                                                        id={`yajman_name_${index}`}
-                                                        variant="standard"
-                                                        value={yajman.name}
-                                                        onChange={(e) => {
-                                                            const updatedYajmanDetails = [...yajmanDetails];
-                                                            updatedYajmanDetails[index].name = e.target.value;
-                                                            setYajmanDetails(updatedYajmanDetails);
-                                                        }}
-                                                        error={formErrors[`yajman_${index}`]}
-                                                        helperText={formErrors[`yajman_${index}`]}
-                                                    />
-                                                </div>
-                                                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                                    <span className='font-nunito-300 form-header color-orange'>Gotra</span>
-                                                    <TextField
-                                                        id={`yajman_gotra_${index}`}
-                                                        variant="standard"
-                                                        value={yajman.gotra}
-                                                        onChange={(e) => {
-                                                            const updatedYajmanDetails = [...yajmanDetails];
-                                                            updatedYajmanDetails[index].gotra = e.target.value;
-                                                            setYajmanDetails(updatedYajmanDetails);
-                                                        }}
-                                                        error={formErrors[`yajman_${index}`]}
-                                                        helperText={formErrors[`yajman_${index}`]}
-                                                    />
-                                                </div>
-                                                {index > 0 && (
-                                                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                        <IconButton onClick={() => deleteYajmanDetail(index)}>
-                                                            <DeleteOutlineIcon color='warning' sx={circularIconStyle} />
-                                                        </IconButton>
-                                                        <span className='font-nunito-300 puja-content color-orange'>Delete</span>
+                                    <div style={{ padding: '15px' }}>
+                                        <div className='yajman-details'>
+                                            {yajmanDetails.map((yajman, index) => (
+                                                <div key={index} className='yajman-details' style={{ marginTop: '3%', display: 'flex', gap: '10%', marginBottom: '3%' }}>
+                                                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                                        <span className='font-nunito-300 form-header color-orange'>Name of Yajman</span>
+                                                        <TextField
+                                                            id={`yajman_name_${index}`}
+                                                            variant="standard"
+                                                            value={yajman.name}
+                                                            onChange={(e) => {
+                                                                const updatedYajmanDetails = [...yajmanDetails];
+                                                                updatedYajmanDetails[index].name = e.target.value;
+                                                                setYajmanDetails(updatedYajmanDetails);
+                                                            }}
+                                                            error={formErrors[`yajman_${index}`]}
+                                                            helperText={formErrors[`yajman_${index}`]}
+                                                        />
                                                     </div>
-                                                )}
-                                            </div>
-                                        ))}
-                                        {yajmanDetails.length < 7 && (
-                                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                <IconButton onClick={addYajmanDetail}>
-                                                    <AddIcon color='warning' sx={circularIconStyle} />
-                                                </IconButton>
-                                                <span className='font-nunito-300'>Add More People</span>
-                                            </div>
-                                        )}
-                                    </div>
-                                    <div className='optional-offering' style={optionalOfferingStyle}>
-                                        <p>Other Offerings (Optional)</p>
-                                        <FormControl component="fieldset">
-                                            <FormGroup style={{ gap: '10%' }}>
-                                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                    <FormControlLabel
-                                                        control={
-                                                            <Checkbox
-                                                                name="Dakshina"
-                                                                onClick={() => setShowDakshinaInput(!showDakshinaInput)}
-                                                            />
-                                                        }
-                                                        label={
-                                                            <div>
-                                                                <span className='font-nunito-300 form-header color-orange'>Dakshina to Pujari and Brahmans for Brahman Bhojan{' '}</span><br />
-                                                                {/* <InfoIcon fontSize="small" /> */}
-                                                            </div>
-                                                        }
-                                                    />
-                                                    {showDakshinaInput && (
+                                                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                                        <span className='font-nunito-300 form-header color-orange'>Gotra</span>
                                                         <TextField
-                                                            id="dakshina-amount"
+                                                            id={`yajman_gotra_${index}`}
                                                             variant="standard"
-                                                            InputProps={{
-                                                                startAdornment: (
-                                                                    <InputAdornment position="start">₹</InputAdornment>
-                                                                ),
+                                                            value={yajman.gotra}
+                                                            onChange={(e) => {
+                                                                const updatedYajmanDetails = [...yajmanDetails];
+                                                                updatedYajmanDetails[index].gotra = e.target.value;
+                                                                setYajmanDetails(updatedYajmanDetails);
                                                             }}
-                                                            value={dakshinaAmount}
-                                                            onChange={(e) => setDakshinaAmount(e.target.value)}
-                                                            error={formErrors['dakshinaAmount']}
-                                                            helperText={formErrors['dakshinaAmount']}
+                                                            error={formErrors[`yajman_${index}`]}
+                                                            helperText={formErrors[`yajman_${index}`]}
                                                         />
+                                                    </div>
+                                                    {index > 0 && (
+                                                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                            <IconButton onClick={() => deleteYajmanDetail(index)}>
+                                                                <DeleteOutlineIcon color='warning' sx={circularIconStyle} />
+                                                            </IconButton>
+                                                            <span className='font-nunito-300 puja-content color-orange'>Delete</span>
+                                                        </div>
                                                     )}
                                                 </div>
-
-                                                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10%', alignItems: 'center' }}>
-                                                    <FormControlLabel
-                                                        control={
-                                                            <Checkbox
-                                                                name="Vastra Offerings"
-                                                                onClick={() => setShowVastraOfferingsInput(!showVastraOfferingsInput)}
-                                                            />
-                                                        }
-                                                        label={
-                                                            <div>
-                                                                <span className='font-nunito-300 form-header color-orange'>
-                                                                    Vastra Offering <br />
+                                            ))}
+                                            {yajmanDetails.length < 7 && (
+                                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                    {isFamily &&
+                                                        <>
+                                                            <IconButton onClick={addYajmanDetail}>
+                                                                <AddIcon color='warning' sx={circularIconStyle} />
+                                                            </IconButton>
+                                                            <span className='font-nunito-300'>Add More People</span>
+                                                        </>
+                                                    }
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className='optional-offering' style={optionalOfferingStyle}>
+                                            <p>Other Offerings (Optional)</p>
+                                            <FormControl component="fieldset">
+                                                <FormGroup style={{ gap: '10%' }}>
+                                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                        <FormControlLabel
+                                                            control={
+                                                                <Checkbox
+                                                                    name="Dakshina"
+                                                                    onClick={() => setShowDakshinaInput(!showDakshinaInput)}
+                                                                />
+                                                            }
+                                                            label={
+                                                                <div>
+                                                                    <span className='font-nunito-300 form-header color-orange'>Dakshina to Pujari and Brahmans for Brahman Bhojan{' '}</span><br />
                                                                     {/* <InfoIcon fontSize="small" /> */}
-                                                                </span>
-                                                            </div>
-                                                        }
-                                                    />
-                                                    {showVastraOfferingsInput && (
-                                                        <TextField
-                                                            id="vastra-offerings-amount"
-                                                            variant="standard"
-                                                            InputProps={{
-                                                                startAdornment: (
-                                                                    <InputAdornment position="start">₹</InputAdornment>
-                                                                ),
-                                                            }}
-                                                            value={vastraOfferingsAmount}
-                                                            onChange={(e) => setVastraOfferingsAmount(e.target.value)}
-                                                            error={formErrors['vastraOfferingsAmount']}
-                                                            helperText={formErrors['vastraOfferingsAmount']}
+                                                                </div>
+                                                            }
                                                         />
-                                                    )}
-                                                </div>
-                                            </FormGroup>
-                                        </FormControl>
+                                                        {showDakshinaInput && (
+                                                            <TextField
+                                                                id="dakshina-amount"
+                                                                variant="standard"
+                                                                InputProps={{
+                                                                    startAdornment: (
+                                                                        <InputAdornment position="start">₹</InputAdornment>
+                                                                    ),
+                                                                }}
+                                                                value={dakshinaAmount}
+                                                                onChange={(e) => setDakshinaAmount(e.target.value)}
+                                                                error={formErrors['dakshinaAmount']}
+                                                                helperText={formErrors['dakshinaAmount']}
+                                                            />
+                                                        )}
+                                                    </div>
+
+                                                    <div style={{ display: 'flex', justifyContent: 'space-between', gap: '20%', alignItems: 'center' }}>
+                                                        <FormControlLabel
+                                                            control={
+                                                                <Checkbox
+                                                                    name="Vastra Offerings"
+                                                                    onClick={() => setShowVastraOfferingsInput(!showVastraOfferingsInput)}
+                                                                />
+                                                            }
+                                                            label={
+                                                                <div>
+                                                                    <span className='font-nunito-300 form-header color-orange'>
+                                                                        Vastra Offering <br />
+                                                                        {/* <InfoIcon fontSize="small" /> */}
+                                                                    </span>
+                                                                </div>
+                                                            }
+                                                        />
+                                                        {showVastraOfferingsInput && (
+                                                            <TextField
+                                                                id="vastra-offerings-qty"
+                                                                variant="standard"
+                                                                type='number'
+                                                                InputProps={{
+                                                                    startAdornment: (
+                                                                        <InputAdornment position="start"></InputAdornment>
+                                                                    ),
+                                                                }}
+                                                                value={vastraOfferingsAmount}
+                                                                onChange={(e) => setVastraOfferingsAmount(e.target.value)}
+                                                                error={formErrors['vastraOfferingsAmount']}
+                                                                helperText={formErrors['vastraOfferingsAmount']}
+                                                            />
+                                                        )}
+                                                        {showVastraOfferingsInput && (
+                                                            <TextField
+                                                                id="vastra-offerings-amount"
+                                                                variant="standard"
+                                                                type='number'
+                                                                InputProps={{
+                                                                    startAdornment: (
+                                                                        <InputAdornment position="start">₹</InputAdornment>
+                                                                    ),
+                                                                }}
+                                                                value={vastraOfferingQty}
+                                                                onChange={(e) => setVastraOfferingQty(e.target.value)}
+                                                            // error={formErrors['vastraOfferingQty']}
+                                                            // helperText={formErrors['vastraOfferingQty']}
+                                                            />
+                                                        )}
+                                                    </div>
+                                                </FormGroup>
+                                            </FormControl>
+                                        </div>
                                     </div>
                                 </CardContent>
                             </Card>
@@ -313,27 +345,32 @@ function PujaForm() {
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <Paper sx={{ margin: '20px', padding: '20px', width: '600px' }}>
-                        <CardContent>
-                            <div style={headerStyle} className='font-roboto-bold color-white'>
-                                <span >Price To Pay</span>
-                                <span>₹ {location?.state?.price}</span>
-                            </div>
-                            <Button
-                                variant="contained"
-                                backgroundColor='#FFF0D9'
-                                style={{
-                                    backgroundColor: 'rgb(255, 131, 65)', "&:hover": {
-                                        bgcolor: "rgb(255, 131, 65)",
-                                        color: "white"
-                                    },
-                                    color: 'white',
-                                    marginTop: '2%'
-                                }}
-                                onClick={handleSubmit}
-                            >
-                                Submit
-                            </Button>
-                        </CardContent>
+                        <Card style={{ borderRadius: '0' }}>
+                            <CardContent style={{ padding: 0 }}>
+                                <div style={headerStyle} className='font-roboto-bold color-white'>
+                                    <span >Price To Pay</span>
+                                </div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '2%' }}>
+                                    <span>Package Amount</span>
+                                    <span>₹ {location?.state?.price}</span>
+                                </div>
+                                <Button
+                                    variant="contained"
+                                    backgroundColor='#FFF0D9'
+                                    style={{
+                                        backgroundColor: 'rgb(255, 131, 65)', "&:hover": {
+                                            bgcolor: "rgb(255, 131, 65)",
+                                            color: "white"
+                                        },
+                                        color: 'white',
+                                        marginTop: '2%'
+                                    }}
+                                    onClick={handleSubmit}
+                                >
+                                    Submit
+                                </Button>
+                            </CardContent>
+                        </Card>
                     </Paper>
                 </Grid>
                 {/* <ToastContainer /> */}

@@ -2,7 +2,7 @@
 import { Box, Input, Button, Paper, Grid } from '@mui/material';
 import './Footer.css';
 import '../App.css'
-import Logo from '../assets/PALogo.svg'
+import Logo from '../assets/puja_logo.png'
 import { useNavigate } from 'react-router-dom';
 
 function Footer() {
@@ -44,16 +44,16 @@ function Footer() {
                         <p onClick={handleCancel} style={{ cursor: 'pointer' }} className='font-nunito-300'>Cancellation</p>
                     </Paper>
                 </Grid>
-                <Grid item >
-                    <Box onClick={handleAddressClick} sx={{ cursor: 'pointer' }}>
-                        <img src={Logo} style={{ width: '40%', height: '30%', marginRight: '5px', cursor: 'pointer' }} />
+                <Grid item sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Box onClick={handleAddressClick} sx={{ cursor: 'pointer', width: '30%' }}>
+                        <img src={Logo} style={{ width: '80%', height: '20%', cursor: 'pointer' }} />
                     </Box>
                 </Grid>
                 <Grid item>
                     <Paper elevation={0} className="column" sx={{ background: 'transparent' }}>
                         <p className='font-roboto-bold section-header'>Contact Us</p>
-                        <p className='font-nunito-300 subSection-content'>Phone: +91 (123) 456-7890</p>
-                        <span className='font-nunito-300 subSection-content'>Email: info@pujaayojan.com</span>
+                        <p className='font-nunito-300 subSection-content'>Phone: +91 74041 110333 </p>
+                        <span className='font-nunito-300 subSection-content'>Email: namaste@pujayojan.com</span>
                     </Paper>
                 </Grid>
             </Box>

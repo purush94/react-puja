@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import './Header.css'
 import '../App.css'
 import { IconButton } from '@mui/material';
-import Logo from '../assets/PALogo.svg'
+import Logo from '../assets/puja_logo.png'
 
 function ResponsiveAppBar() {
     const [checked, setChecked] = React.useState(true);
@@ -27,7 +27,7 @@ function ResponsiveAppBar() {
             <Container maxWidth="xl" sx={{ display: 'flex' }}>
                 <Toolbar sx={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
                     <Box onClick={handleAddressClick} sx={{ cursor: 'pointer' }}>
-                        <img src={Logo} style={{ width: '30%', height: '20%', marginRight: '5px', cursor: 'pointer' }} onClick={handleAddressClick} />
+                        <img src={Logo} style={{ width: '20%', height: '20%', cursor: 'pointer' }} onClick={handleAddressClick} />
                     </Box>
                     <Box className="header-options" style={{ display: 'flex', flex: 0.6, justifyContent: 'space-around' }}>
                         <Button variant="text" color="inherit" className='font-montserrat-medium' style={{ cursor: 'context-menu' }} disabled></Button>
