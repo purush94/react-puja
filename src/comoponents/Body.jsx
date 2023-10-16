@@ -95,7 +95,7 @@ function Body() {
                                 <Paper elevation={0} sx={{ background: 'transparent' }}>
                                     {card.features.map((feature, featureIndex) => (
                                         <div key={featureIndex}>
-                                            <span className='font-nunito-300 section-choose description-card'>{feature.description}</span>
+                                            <span className='font-nunito-300 section-choose description-card' style={{ padding: 0 }}>{feature.description}</span>
                                         </div>
                                     ))}
                                 </Paper>

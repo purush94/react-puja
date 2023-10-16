@@ -14,9 +14,9 @@ function AstroCard() {
                     Gain Insight and Guidance for Life's Journey.
                     Experienced Astrologer Offering Personalized Consultations.
                     Discover the Stars' Secrets  - Book Your Session Today!</span>
-                <Button variant="contained" color="primary" className="orange-button" disabled style={{ color: 'white' }}>
-                    Coming Soon
-                </Button>
+                {/* <Button variant="contained" color="primary" className="orange-button" disabled style={{ color: 'white' }}> */}
+                <span className='section-header font-nunito-300'>Coming Soon</span>
+                {/* </Button> */}
             </CardContent>
         </Card>
     );

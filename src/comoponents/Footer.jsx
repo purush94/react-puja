@@ -2,7 +2,7 @@
 import { Box, Input, Button, Paper, Grid } from '@mui/material';
 import './Footer.css';
 import '../App.css'
-import Logo from '../assets/puja_logo.png'
+import Logo from '../assets/logo.svg'
 import { useNavigate } from 'react-router-dom';
 
 function Footer() {
@@ -55,9 +55,9 @@ function Footer() {
                     </Paper>
                 </Grid>
                 <Grid item sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Box onClick={handleAddressClick} sx={{ cursor: 'pointer', width: '30%' }}>
-                        <img src={Logo} style={{ width: '80%', height: '20%', cursor: 'pointer' }} />
-                        <p style={{ cursor: 'context-menu' }}>&copy; 2023 PujaAyojan.<br /> All Rights Reserved.</p>
+                    <Box sx={{ width: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <img src={Logo} style={{ width: '60%', height: '20%', cursor: 'pointer' }} onClick={handleAddressClick} />
+                        <p style={{ cursor: 'context-menu' }} className='font-nunito-300 puja-content'>&copy; 2023 PujaAyojan.<br /> All Rights Reserved.</p>
                     </Box>
                 </Grid>
                 <Grid item>

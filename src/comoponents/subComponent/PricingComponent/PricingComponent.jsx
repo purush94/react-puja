@@ -78,6 +78,7 @@ const useStyles = makeStyles({
         position: 'relative',
         zIndex: 1,
         fontFamily: 'Nunito',
+        // padding: '0.5rem'
     },
     button: {
         backgroundColor: (props) => props.borderColor,
@@ -118,23 +119,31 @@ function PricingCard(props) {
     };
 
     return (
-        <Paper {...props} elevation={3} className={msClasses.pricingCard} style={{ margin: '5% 0' }}>
-            <div className={msClasses.pricingHeading} style={{ backgroundImage: backgroundImages[props.currInd].heading }}>
-                <img src={props.background.title} className={msClasses.titleImage} />
-                <span className={msClasses.details} style={{ color: 'white', paddingBottom: '5px' }}>{props.title}</span>
-                <span className={msClasses.price} style={{ color: 'white', fontWeight: '700' }}>₹{props.price}</span>
-            </div>
-            <div style={{ padding: '0 20px', marginBottom: '20px' }}>
-                {props.fields.map((field, index) => (
-                    <p className={msClasses.details} key={index} style={{ textAlign: 'left' }}>
-                        <span style={{ fontWeight: 700 }} className='font-nunito-300'>{field}</span>
-                    </p>
-                ))}
-                <Button variant="outlined" className={msClasses.button} onClick={handleGetStarted}>
-                    Book Today
-                </Button>
-            </div>
-        </Paper>
+        <div style={{ display: 'flex', flexDirection: 'column', width: '100%', margin: '10px' }}>
+            <img
+                src={props.background.title}
+                className={msClasses.titleImage}
+                style={{ backgroundColor: 'transparent', width: '80%', height: '150px', alignSelf: 'center' }}
+            />
+            <Paper {...props} elevation={3} className={msClasses.pricingCard} style={{ margin: '5% 0', width: '100%' }}>
+                <div className={msClasses.pricingHeading} style={{ backgroundImage: backgroundImages[props.currInd].heading }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '80%' }}>
+                        <span className={msClasses.details} style={{ color: 'white', padding: '0.5rem', fontSize: '2rem' }}>{props.title}</span>
+                        <span className={msClasses.price} style={{ color: 'white', fontWeight: '700', fontSize: '2rem' }}>₹{props.price}</span>
+                    </div>
+                </div>
+                <div style={{ padding: '0 20px', marginBottom: '20px' }}>
+                    {props.fields.map((field, index) => (
+                        <p className={msClasses.details} key={index} style={{ textAlign: 'left' }}>
+                            <span style={{ fontWeight: 700 }} className='font-nunito-300'>{field}</span>
+                        </p>
+                    ))}
+                    <Button variant="outlined" className={msClasses.button} onClick={handleGetStarted}>
+                        Book Today
+                    </Button>
+                </div>
+            </Paper>
+        </div>
     );
 }
 

@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import './Header.css'
 import '../App.css'
 import { IconButton } from '@mui/material';
-import Logo from '../assets/puja_logo.png'
+import Logo from '../assets/logo.svg'
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
 function ResponsiveAppBar() {
@@ -32,7 +32,9 @@ function ResponsiveAppBar() {
         <Box position="static" color='inherit'>
             <Container maxWidth="xl" sx={{ display: 'flex' }}>
                 <Toolbar sx={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
-                    <img src={Logo} style={{ width: '10%', cursor: 'pointer' }} onClick={handleAddressClick} />
+                    <div>
+                        <img src={Logo} style={{ width: '20%', cursor: 'pointer' }} onClick={handleAddressClick} />
+                    </div>
                     <Box className="header-options" style={{ display: 'flex', flex: 0.3, justifyContent: 'space-around', alignItems: 'center' }}>
                         <Button variant="text" color="inherit" className='font-montserrat-medium' style={{ cursor: 'pointer' }} onClick={handleAddressClick}>Home</Button>
                         <Button variant="text" color="inherit" className='font-montserrat-medium' style={{ cursor: 'pointer' }} onClick={handleAboutUs}>About Us</Button>
