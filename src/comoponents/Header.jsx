@@ -32,8 +32,8 @@ function ResponsiveAppBar() {
         <Box position="static" color='inherit'>
             <Container maxWidth="xl" sx={{ display: 'flex' }}>
                 <Toolbar sx={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
-                    <div>
-                        <img src={Logo} style={{ width: '20%', cursor: 'pointer' }} onClick={handleAddressClick} />
+                    <div style={{ width: '100px' }}>
+                        <img src={Logo} style={{ cursor: 'pointer' }} onClick={handleAddressClick} />
                     </div>
                     <Box className="header-options" style={{ display: 'flex', flex: 0.3, justifyContent: 'space-around', alignItems: 'center' }}>
                         <Button variant="text" color="inherit" className='font-montserrat-medium' style={{ cursor: 'pointer' }} onClick={handleAddressClick}>Home</Button>

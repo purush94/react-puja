@@ -30,18 +30,20 @@ function Footer() {
     return (
         <Box className="footer">
             <Box className="top-section">
-                <span className='font-montserrat-medium section-header'>Keep up-to Date with Puja Ayojan</span>
-                <Box className="email-section">
+                <span className='font-montserrat-medium section-header'>Want a personalised puja?</span>
+                <Button variant="contained" onClick={handleContact} className="subscribe-button font-nunito-300 section-content" style={{
+                    backgroundColor: 'white', color: 'rgb(255, 131, 65)'
+                }}>
+                    Contact Us
+                </Button>
+                {/* <Box className="email-section">
                     <Input
                         type="email"
                         placeholder="Enter your Email Id"
                         className="my-input"
                         disableUnderline
                     />
-                    <Button variant="contained" className="subscribe-button font-nunito-300 section-content">
-                        Subscribe Now
-                    </Button>
-                </Box>
+                </Box> */}
             </Box>
             <Box className="bottom-section">
                 <Grid item >
@@ -55,8 +57,10 @@ function Footer() {
                     </Paper>
                 </Grid>
                 <Grid item sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Box sx={{ width: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <img src={Logo} style={{ width: '60%', height: '20%', cursor: 'pointer' }} onClick={handleAddressClick} />
+                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <div style={{ width: '100px' }}>
+                            <img src={Logo} style={{ cursor: 'pointer' }} onClick={handleAddressClick} />
+                        </div>
                         <p style={{ cursor: 'context-menu' }} className='font-nunito-300 puja-content'>&copy; 2023 PujaAyojan.<br /> All Rights Reserved.</p>
                     </Box>
                 </Grid>
