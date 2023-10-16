@@ -1,5 +1,6 @@
-import { Card, CardContent, Typography, Button } from '@mui/material';
+import { Card, CardContent, Button } from '@mui/material';
 import './AstroCard.css';
+import '../../../App.css'
 import AstroImg from '../../../assets/mystical-numerology-scene.png'
 
 function AstroCard() {
@@ -8,16 +9,13 @@ function AstroCard() {
         <Card className="astro-card" >
             <img src={AstroImg} alt="Background" className="background-image" />
             <CardContent className="overlay-content">
-                <Typography variant="h6" className="overlay-heading" style={{ fontWeight: 'bold' }}>
-                    Astrology Consultancy
-                </Typography>
-                <span></span>
-                <Typography variant="subtitle2" className="overlay-paragraph">
-                    Chambray Carles Terry Gibson balls plaid wolf. Disrupt fashion axe 90's quinoa +1 Neutra. Irony ethnic ennui McSweeney's, semiotics small batch squid direct trade. Readymade salvia Echo Park scenester.
-                </Typography>
-                <span></span>
-                <Button variant="contained" color="primary" className="orange-button">
-                    Book Now
+                <span className='font-montserrat-regular section-header'>Astrology Consultancy</span>
+                <span className='font-nunito-300 puja-content'>Unlock Your Future with Astrology Readings!
+                    Gain Insight and Guidance for Life's Journey.
+                    Experienced Astrologer Offering Personalized Consultations.
+                    Discover the Stars' Secrets  - Book Your Session Today!</span>
+                <Button variant="contained" color="primary" className="orange-button" disabled style={{ color: 'white' }}>
+                    Coming Soon
                 </Button>
             </CardContent>
         </Card>

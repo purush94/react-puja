@@ -13,6 +13,8 @@ import bg1 from '../../../assets/red.png';
 import bg2 from '../../../assets/rust.png';
 import bg3 from '../../../assets/brown.png';
 import bg4 from '../../../assets/orange.png';
+
+import Background from '../../../assets/pricing_background.png'
 import { useNavigate, useParams } from 'react-router-dom';
 
 const colors = ['#64CCC5', '#85E6C5', '#F7E987', '#A1CCD1', '#33D1FF'];
@@ -79,7 +81,10 @@ const useStyles = makeStyles({
     },
     button: {
         backgroundColor: (props) => props.borderColor,
+        borderRadius: '20px',
         color: 'white',
+        border: 'none',
+        background: 'transparent linear-gradient(180deg, #FF7002 0%, #FF8F39 100%) 0% 0% no-repeat padding-box',
         borderColor: (props) => props.borderColor,
         position: 'relative',
         zIndex: 1,
@@ -113,7 +118,7 @@ function PricingCard(props) {
     };
 
     return (
-        <Paper {...props} elevation={3} className={msClasses.pricingCard}>
+        <Paper {...props} elevation={3} className={msClasses.pricingCard} style={{ margin: '5% 0' }}>
             <div className={msClasses.pricingHeading} style={{ backgroundImage: backgroundImages[props.currInd].heading }}>
                 <img src={props.background.title} className={msClasses.titleImage} />
                 <span className={msClasses.details} style={{ color: 'white', paddingBottom: '5px' }}>{props.title}</span>
@@ -126,7 +131,7 @@ function PricingCard(props) {
                     </p>
                 ))}
                 <Button variant="outlined" className={msClasses.button} onClick={handleGetStarted}>
-                    Get Started
+                    Book Today
                 </Button>
             </div>
         </Paper>
@@ -148,8 +153,8 @@ function PricingComponent({ pujaDetails }) {
     const sortedPujaDetails = pujaDetails.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
     return (
         <section style={{ padding: '20px 0', backgroundColor: '#f4f4f4' }}>
-            <div style={{ height: '800px', margin: '0 auto' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+            <div style={{ margin: '0 auto' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-around', background: `url(${Background})` }}>
                     {sortedPujaDetails.map((detail, index) => (
                         <PricingCard
                             key={`pujaCard-${index}`}

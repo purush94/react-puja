@@ -37,7 +37,7 @@ const cardData = [
         features: [
             {
                 title: 'Feature 3',
-                description: 'Puja Ayojan addresses the need to make Indian spiritual services accessible worldwide at the click of a button.'
+                description: 'Puja Ayojan addresses the need to make Indian spiritual services accessible worldwide at the click of a button. Puja ayojan allows you to participate in poojas from anywhere, eliminating geographical limitations.'
             },
         ]
     },
@@ -85,9 +85,9 @@ function Body() {
                 </Box>
                 <Box className='body-description-section'>
                     <Box className='body-description-header'>
-                        <img src={Pre} alt="Before Image" className='header-image' />
+                        <img src={Pre} alt="Image" className='header-image' />
                         <span className='font-playfair-regular section-header'>Why Choose Us</span>
-                        <img src={Post} alt="Before Image" className='header-image' />
+                        <img src={Post} alt="Image" className='header-image' />
                     </Box>
                     <Box className="description-card-section">
                         {cardData.map((card, index) => (
@@ -95,7 +95,7 @@ function Body() {
                                 <Paper elevation={0} sx={{ background: 'transparent' }}>
                                     {card.features.map((feature, featureIndex) => (
                                         <div key={featureIndex}>
-                                            <span className='font-nunito-300 section-content description-card'>{feature.description}</span>
+                                            <span className='font-nunito-300 section-choose description-card'>{feature.description}</span>
                                         </div>
                                     ))}
                                 </Paper>
@@ -110,9 +110,9 @@ function Body() {
                     <span className='font-playfair-regular section-header'>Guided Mediatations</span>
                     <Meditation />
                 </Box> */}
-                {/* <Box className='body-astrology-section'>
+                <Box className='body-astrology-section'>
                     <AstroCard />
-                </Box> */}
+                </Box>
                 {/* <Box className='body-donations-section'>
                     <DonationsCards />
                 </Box> */}

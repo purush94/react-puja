@@ -9,10 +9,12 @@ import './Header.css'
 import '../App.css'
 import { IconButton } from '@mui/material';
 import Logo from '../assets/puja_logo.png'
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 function ResponsiveAppBar() {
     const [checked, setChecked] = React.useState(true);
     const navigate = useNavigate();
+    const url = `https://www.youtube.com/channel/UC43scwABOdykkNP21HWUosg`
 
     const handleChange = (event) => {
         setChecked(event.target.checked);
@@ -30,12 +32,11 @@ function ResponsiveAppBar() {
         <Box position="static" color='inherit'>
             <Container maxWidth="xl" sx={{ display: 'flex' }}>
                 <Toolbar sx={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
-                    {/* <Box onClick={handleAddressClick} sx={{ width: '30%', cursor: 'pointer' }}> */}
                     <img src={Logo} style={{ width: '10%', cursor: 'pointer' }} onClick={handleAddressClick} />
-                    {/* </Box> */}
-                    <Box className="header-options" style={{ display: 'flex', flex: 0.6, justifyContent: 'space-around' }}>
-                        <Button variant="text" color="inherit" className='font-montserrat-medium' style={{ cursor: 'context-menu' }} disabled></Button>
+                    <Box className="header-options" style={{ display: 'flex', flex: 0.3, justifyContent: 'space-around', alignItems: 'center' }}>
+                        <Button variant="text" color="inherit" className='font-montserrat-medium' style={{ cursor: 'pointer' }} onClick={handleAddressClick}>Home</Button>
                         <Button variant="text" color="inherit" className='font-montserrat-medium' style={{ cursor: 'pointer' }} onClick={handleAboutUs}>About Us</Button>
+                        <YouTubeIcon sx={{ cursor: 'pointer' }} onClick={() => window.open(url, '_blank')} color='error' />
                         {/* <Box className='font-montserrat-medium'>
                             <span className='font-montserrat-medium'>हिन्दी</span>
                             <Switch

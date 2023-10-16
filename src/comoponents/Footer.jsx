@@ -57,6 +57,7 @@ function Footer() {
                 <Grid item sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <Box onClick={handleAddressClick} sx={{ cursor: 'pointer', width: '30%' }}>
                         <img src={Logo} style={{ width: '80%', height: '20%', cursor: 'pointer' }} />
+                        <p style={{ cursor: 'context-menu' }}>&copy; 2023 PujaAyojan.<br /> All Rights Reserved.</p>
                     </Box>
                 </Grid>
                 <Grid item>
