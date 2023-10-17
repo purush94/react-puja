@@ -12,6 +12,7 @@ import Cancellation from './comoponents/subComponent/Cancellation/Cancellation'
 import Contact from './comoponents/subComponent/Contact/Contact'
 import TermsAndCondition from './comoponents/subComponent/TermsAndCondition/TermsAndCondition'
 import About from './comoponents/subComponent/About/About'
+import ShippingPolicy from './comoponents/subComponent/ShippingPolicy/ShippingPolicy'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path='/cancellation' element={<Cancellation />} />
           <Route path='/contact-us' element={<Contact />} />
           <Route path='/terms-condition' element={<TermsAndCondition />} />
+          <Route path='/shipping-policy' element={<ShippingPolicy />} />
         </Routes>
         <Footer />
       </div>

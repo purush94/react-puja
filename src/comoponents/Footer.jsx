@@ -20,6 +20,10 @@ function Footer() {
         navigate(`/contact-us`)
     }
 
+    const handleShipping = () => {
+        navigate(`/shipping-policy`)
+    }
+
     const handleTermsAndCondition = () => {
         navigate(`/terms-condition`)
     }
@@ -54,6 +58,7 @@ function Footer() {
                         <p onClick={handleCancel} style={{ cursor: 'pointer' }} className='font-nunito-300'>Cancellation and Refund</p>
                         <p onClick={handleTermsAndCondition} style={{ cursor: 'pointer' }} className='font-nunito-300'>Terms and Condition</p>
                         <p onClick={handleContact} style={{ cursor: 'pointer' }} className='font-nunito-300'>Contact Us</p>
+                        <p onClick={handleShipping} style={{ cursor: 'pointer' }} className='font-nunito-300'>Shipping Policy</p>
                     </Paper>
                 </Grid>
                 <Grid item sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

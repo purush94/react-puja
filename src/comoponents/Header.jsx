@@ -30,16 +30,15 @@ function ResponsiveAppBar() {
 
     return (
         <Box position="static" color='inherit'>
-            <Container maxWidth="xl" sx={{ display: 'flex' }}>
-                <Toolbar sx={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
-                    <div style={{ width: '100px' }}>
-                        <img src={Logo} style={{ cursor: 'pointer' }} onClick={handleAddressClick} />
-                    </div>
-                    <Box className="header-options" style={{ display: 'flex', flex: 0.3, justifyContent: 'space-around', alignItems: 'center' }}>
-                        <Button variant="text" color="inherit" className='font-montserrat-medium' style={{ cursor: 'pointer' }} onClick={handleAddressClick}>Home</Button>
-                        <Button variant="text" color="inherit" className='font-montserrat-medium' style={{ cursor: 'pointer' }} onClick={handleAboutUs}>About Us</Button>
-                        <YouTubeIcon sx={{ cursor: 'pointer' }} onClick={() => window.open(url, '_blank')} color='error' />
-                        {/* <Box className='font-montserrat-medium'>
+            <Container maxWidth="xl" style={{ display: 'flex', justifyContent: 'space-between' }} className='header'>
+                <div style={{ width: '100px' }}>
+                    <img src={Logo} style={{ cursor: 'pointer' }} onClick={handleAddressClick} />
+                </div>
+                <Box className="header-options" style={{ display: 'flex', flex: 0.3, justifyContent: 'space-around', alignItems: 'center' }}>
+                    <Button variant="text" color="inherit" className='font-montserrat-medium' style={{ cursor: 'pointer' }} onClick={handleAddressClick}>Home</Button>
+                    <Button variant="text" color="inherit" className='font-montserrat-medium' style={{ cursor: 'pointer' }} onClick={handleAboutUs}>About Us</Button>
+                    <YouTubeIcon sx={{ cursor: 'pointer' }} onClick={() => window.open(url, '_blank')} color='error' />
+                    {/* <Box className='font-montserrat-medium'>
                             <span className='font-montserrat-medium'>हिन्दी</span>
                             <Switch
                                 checked={checked}
@@ -49,7 +48,7 @@ function ResponsiveAppBar() {
                             />
                             <span className='font-montserrat-medium'>English</span>
                         </Box> */}
-                        {/* <Button variant="contained" className='font-montserrat-medium' sx={{
+                    {/* <Button variant="contained" className='font-montserrat-medium' sx={{
                             backgroundColor: '#FEB66D', "&:hover": {
                                 backgroundColor: "#FEB66D",
                                 color: "white"
@@ -57,8 +56,7 @@ function ResponsiveAppBar() {
                         }} disabled>
 
                         </Button> */}
-                    </Box>
-                </Toolbar>
+                </Box>
             </Container>
         </Box>
     );
