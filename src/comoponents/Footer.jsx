@@ -33,22 +33,6 @@ function Footer() {
     }
     return (
         <Box className="footer">
-            <Box className="top-section">
-                <span className='font-montserrat-medium section-header'>Want a personalised puja?</span>
-                <Button variant="contained" onClick={handleContact} className="subscribe-button font-nunito-300 section-content" style={{
-                    backgroundColor: 'white', color: 'rgb(255, 131, 65)'
-                }}>
-                    Contact Us
-                </Button>
-                {/* <Box className="email-section">
-                    <Input
-                        type="email"
-                        placeholder="Enter your Email Id"
-                        className="my-input"
-                        disableUnderline
-                    />
-                </Box> */}
-            </Box>
             <Box className="bottom-section">
                 <Grid item >
                     <Paper elevation={0} className="column" sx={{ backgroundColor: 'transparent' }}>

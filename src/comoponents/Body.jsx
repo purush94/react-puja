@@ -9,9 +9,10 @@ import { Box } from '@mui/system';
 import AstroCard from './subComponent/AstroCard/AstroCard';
 import DonationsCards from './subComponent/DonationsCards/DonationsCards';
 import '../App.css'
-import { Card, CardContent, Paper } from '@mui/material';
+import { Button, Card, CardContent, Paper } from '@mui/material';
 import Pre from '../assets/preHeader.svg'
 import Post from '../assets/postHeader.svg'
+import { useNavigate } from 'react-router-dom';
 
 const cardData = [
     {
@@ -46,10 +47,15 @@ const cardData = [
 
 function Body() {
     const [selectedSection, setSelectedSection] = useState('Upcoming');
+    const navigate = useNavigate()
 
     const handleSectionClick = (section) => {
         setSelectedSection(section);
     };
+
+    const handleContact = () => {
+        navigate(`/contact-us`)
+    }
 
     // const handleSearch = (value) => {
     //     setSearchValue(value);
@@ -116,6 +122,16 @@ function Body() {
                 {/* <Box className='body-donations-section'>
                     <DonationsCards />
                 </Box> */}
+                <Box sx={{ width: '100%' }}>
+                    <Box className="bottom-banner">
+                        <span className='font-montserrat-medium section-header'>Want a personalised puja?</span>
+                        <Button variant="contained" onClick={handleContact} className="subscribe-button font-nunito-300 section-content" style={{
+                            backgroundColor: 'white', color: 'rgb(255, 131, 65)'
+                        }}>
+                            Contact Us
+                        </Button>
+                    </Box>
+                </Box>
             </Box>
         </Box>
     );

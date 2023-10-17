@@ -161,7 +161,7 @@ PricingCard.propTypes = {
 function PricingComponent({ pujaDetails }) {
     const sortedPujaDetails = pujaDetails.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
     return (
-        <section style={{ padding: '20px 0', backgroundColor: '#f4f4f4' }}>
+        <section style={{ backgroundColor: '#f4f4f4' }}>
             <div style={{ margin: '0 auto' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-around', background: `url(${Background})` }}>
                     {sortedPujaDetails.map((detail, index) => (
