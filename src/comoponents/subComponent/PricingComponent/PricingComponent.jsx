@@ -16,6 +16,7 @@ import bg4 from '../../../assets/orange.png';
 
 import Background from '../../../assets/pricing_background.png'
 import { useNavigate, useParams } from 'react-router-dom';
+import { Box } from '@mui/material';
 
 const colors = ['#64CCC5', '#85E6C5', '#F7E987', '#A1CCD1', '#33D1FF'];
 
@@ -132,16 +133,19 @@ function PricingCard(props) {
                         <span className={msClasses.price} style={{ color: 'white', fontWeight: '700', fontSize: '2rem' }}>₹{props.price}</span>
                     </div>
                 </div>
-                <div style={{ padding: '0 20px', marginBottom: '20px' }}>
-                    {props.fields.map((field, index) => (
-                        <p className={msClasses.details} key={index} style={{ textAlign: 'left' }}>
-                            <span style={{ fontWeight: 700 }} className='font-nunito-300'>{field}</span>
-                        </p>
-                    ))}
-                    <Button variant="outlined" className={msClasses.button} onClick={handleGetStarted}>
+                <Box display="flex" flexDirection="column" justifyContent="space-between" sx={{ minHeight: '600px' }}>
+                    <div style={{ padding: '0 20px', marginBottom: '20px' }}>
+                        {props.fields.map((field, index) => (
+                            <p className={msClasses.details} key={index} style={{ textAlign: 'left' }}>
+                                <span style={{ fontWeight: 700 }} className='font-nunito-300'>{field}</span>
+                            </p>
+                        ))}
+                    </div>
+                    <Button style={{ width: '60%', marginBottom: '40px', alignSelf: 'center' }} variant="outlined" className={msClasses.button} onClick={handleGetStarted}>
                         Book Today
                     </Button>
-                </div>
+                </Box>
+
             </Paper>
         </div>
     );
